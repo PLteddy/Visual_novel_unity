@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneLoose.unity
     guid: e35e902142c5d33449b159d652e7134f
+  - enabled: 1
+    path: Assets/Scenes/SceneGarage.unity
+    guid: 4a3d3fd7e37a0264398f9ec911bf3f3d
   m_configObjects: {}

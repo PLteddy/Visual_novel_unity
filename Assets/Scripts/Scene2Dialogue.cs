@@ -113,7 +113,7 @@ public class Scene2Dialogue : MonoBehaviour
 
     public void GoToScene1()
     {
-        SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene("SceneGarage");
     }
 
     public void GoToScene2()

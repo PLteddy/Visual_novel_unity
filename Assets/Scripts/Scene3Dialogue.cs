@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Scene3Dialogue : MonoBehaviour
 {
-    public int primeInt = 1;
+    public int primeInt = 1;        
     public TMP_Text Char1name;
     public TMP_Text Char1speech;
     public GameObject DialogueDisplay;
@@ -13,122 +13,217 @@ public class Scene3Dialogue : MonoBehaviour
     public GameObject ArtBG1;
     public GameObject Rond1;
     public GameObject Rond2;
-    public GameObject Rond3;
+    //public GameObject Rond3;
     public GameObject Rond4;
     public GameObject Choice1a;
     public GameObject Choice1b;
-    public GameObject Choice2a;
-    public GameObject Choice2b;
+    //public GameObject Choice2a;
+    //public GameObject Choice2b;
     public GameObject nextButton;
     private bool allowSpace = true;
-    private bool firstTime;
+
+    private bool firstTime; // nouvelle variable pour simplifier
+    private bool hasStartedDialogue = false;
+    private bool hasStartedRond2 = false;
 
     void Start()
+{
+    // TEMP pour tester le premier passage à chaque fois :
+    PlayerPrefs.DeleteKey("SceneGarageFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
+
+    DialogueDisplay.SetActive(false);
+    ArtChar1a.SetActive(false);
+    ArtBG1.SetActive(true);
+    Rond1.SetActive(false);
+    Rond2.SetActive(false);
+    //Rond3.SetActive(false);
+    Rond4.SetActive(false);
+    Choice1a.SetActive(false);
+    Choice1b.SetActive(false);
+    //Choice2a.SetActive(false);
+    //Choice2b.SetActive(false);
+    nextButton.SetActive(true);
+
+    firstTime = PlayerPrefs.GetInt("SceneGarageFirstTime", 0) == 0;
+
+    if (firstTime)
     {
-        PlayerPrefs.DeleteKey("SceneGarageFirstTime");
-        DialogueDisplay.SetActive(false);
-        ArtChar1a.SetActive(false);
-        ArtBG1.SetActive(true);
-        Rond1.SetActive(false);
-        Rond2.SetActive(false);
-        Rond3.SetActive(false);
-        Rond4.SetActive(false);
-        Choice1a.SetActive(false);
-        Choice1b.SetActive(false);
-        Choice2a.SetActive(false);
-        Choice2b.SetActive(false);
+        primeInt = 1;
+        DialogueDisplay.SetActive(true);
         nextButton.SetActive(true);
-
-        firstTime = PlayerPrefs.GetInt("SceneGarageFirstTime", 0) == 0;
-
-        if (firstTime)
-        {
-            primeInt = 1;
-            DialogueDisplay.SetActive(true);
-            Next();
-            PlayerPrefs.SetInt("SceneGarageFirstTime", 1);
-        }
-        else
-        {
-            primeInt = 99;
-            DialogueDisplay.SetActive(true);
-            Next();
-        }
+        Next();
+        PlayerPrefs.SetInt("SceneGarageFirstTime", 1);
     }
+    else
+    {
+        DialogueDisplay.SetActive(true);
+        nextButton.SetActive(true);
+        primeInt = 99;
+        Next();
+    }
+}
 
     void Update()
     {
-        if (allowSpace && Input.GetKeyDown("space"))
+        if (allowSpace)
         {
-            Next();
+            if (Input.GetKeyDown("space"))
+            {
+                Next();
+            }
         }
     }
 
     public void Next()
     {
-        switch(primeInt)
+        if (primeInt == 1)
         {
-            case 1:
-                ArtChar1a.SetActive(true);
-                Char1name.text = "You";
-                Char1speech.text = "Je suis dans un garage";
-                primeInt++;
-                break;
-            
-            case 2:
-                Char1name.text = "YOU";
-                Char1speech.text = "Je ne reconnais pas cet endroit...";
-                primeInt++;
-                break;
-            
-            case 3:
-                Char1name.text = "You";
-                Char1speech.text = "Peut-être que je devrais explorer un peu";
-                primeInt++;
-                break;
-            
-            case 4:
-                EndDialogue();
-                break;
-            
-            // Après choix porte
-            case 8:
-                Char1name.text = "You";
-                Char1speech.text = "Je suis le choix après 1";
-                primeInt++;
-                break;
-            
-            case 9:
-                Char1name.text = "You";
-                Char1speech.text = "On parle et parlote";
-                primeInt++;
-                break;
-            
-            // Après choix compteur
-case 20:
+            ArtChar1a.SetActive(true);
+            Char1name.text = "You";
+            Char1speech.text = "Je suis dans un garage";
+            primeInt++;
+        }
+        else if (primeInt == 2)
+        {
+            Char1name.text = "YOU";
+            Char1speech.text = "Je ne reconnais pas cet endroit...";
+            primeInt++;
+        }
+        else if (primeInt == 3)
+        {
+            Char1name.text = "You";
+            Char1speech.text = "Peut-être que je devrais explorer un peu";
+            primeInt++;
+        }
+        else if (primeInt == 4)
+        {
+            EndDialogue();
+        }
+        else if (primeInt == 99)
+        {
+            // Cas du "je suis déjà passé"
+            Char1name.text = "YOU";
+            Char1speech.text = "Je suis déjà passé par ici...";
+            primeInt = 100;
+        }
+        else if (primeInt == 100)
+        {
+            EndDialogue();
+        }
+
+//rond1_d
+    if (primeInt == 40)
+    {
+        ArtChar1a.SetActive(true);
+        Char1name.text = "You";
+        Char1speech.text = "C'est des étagères pleines de vieux outils";
+        primeInt++;
+    }
+    else if (primeInt == 41)
+    {
+        Char1name.text = "YOU";
+        Char1speech.text = "Je pourrais peut être fouiller et trouver quelque chose d'utilile";
+        primeInt++;
+    }
+    else if (primeInt == 42)
+    {
+        Char1name.text = "You";
+        Char1speech.text = "Il n'y avait rien d'intéressant";
+        primeInt++;
+    }
+    else if (primeInt == 43)
+    {
+        EndDialogue();
+    }
+
+//rond2_d
+        if (primeInt == 80)
+        {
+            ArtChar1a.SetActive(true);
+            Char1name.text = "You";
+            Char1speech.text = "C'est la porte du garage";
+            primeInt++;
+        }
+        else if (primeInt == 81)
+        {
+            Char1name.text = "YOU";
+            Char1speech.text = "Je pourrais peut être l'ouvrir et m'echapper";
+            primeInt++;
+        }
+        else if (primeInt == 82)
+        {
+            Char1name.text = "You";
+            Char1speech.text = "avec un peu de force ";
+            primeInt++;
+        }
+
+else if (primeInt == 83){
+    Char1name.text = "Jeda";
+    Char1speech.text = "Je tente ou pas ?";
+    nextButton.SetActive(false);
+    allowSpace = false;
+    Choice1a.SetActive(true);
+    Choice1b.SetActive(true);
+}
+
+// after choice 1a
+else if (primeInt == 84){
+    Char1name.text = "YOU";
+    Char1speech.text = "choix1 porte";
+    primeInt = 85; // ira à 85 sur "Next"
+}
+else if (primeInt == 85){
+    Char1name.text = "You";
+    Char1speech.text = "Je suis le choix après 1";
+    primeInt++;
+}
+else if (primeInt == 86){
+    Char1name.text = "You";
+    Char1speech.text = "On parle et parlote";
+    primeInt++;
+}
+else if (primeInt == 87){
+    EndDialogue();
+}
+
+// after choice 1b
+else if (primeInt == 94){
+    Char1name.text = "YOU";
+    Char1speech.text = "choix2 porte";
+    primeInt = 95; // ira à 95 sur "Next"
+}
+else if (primeInt == 95){
     Char1name.text = "You";
     Char1speech.text = "Je suis le choix après 2";
     primeInt++;
-    break;
-
-case 21:
+}
+else if (primeInt == 96){
     Char1name.text = "You";
-    Char1speech.text = "On parle et parlotte toujours";
+    Char1speech.text = "on parle et parlotte toujours";
     primeInt++;
-    break;
+}
+else if (primeInt == 97){
+    EndDialogue();
+}
 
-            
-            case 99:
-                Char1name.text = "YOU";
-                Char1speech.text = "Je suis déjà passé par ici...";
-                primeInt = 100;
-                break;
-            
-            case 100:
-                EndDialogue();
-                break;
-        }
+
+
+// Si on est déjà passé     AVANT DE DECOMMENTEZ IL FAUT VERIFIER SI LA VARIABLE MARCHE BIEN LE BOOLEAN 
+//parce que ça semble pas marcher mon dialogue s'arrête au premier texte
+// else if (primeInt == 199){ 
+//     Char1name.text = "You";
+//     Char1speech.text = "Je suis déjà passé là";
+//     primeInt++;
+    
+// }
+// else if (primeInt == 200){
+//     EndDialogue();
+// }
+
+
     }
+
+
 
     void EndDialogue()
     {
@@ -138,146 +233,69 @@ case 21:
         ArtChar1a.SetActive(false);
         Rond1.SetActive(true);
         Rond2.SetActive(true);
-        Rond3.SetActive(true);
+        //Rond3.SetActive(true);
         Rond4.SetActive(true);
     }
 
-    public void Rond1_d()
+public void Rond1_d()
+{
+    if (!hasStartedDialogue)
     {
-        if (!DialogueDisplay.activeSelf)
-        {
-            DialogueDisplay.SetActive(true);
-            nextButton.SetActive(true);
-            primeInt = 1;
-            allowSpace = true;
-            
-            StartCoroutine(Rond1Dialogue());
-        }
-    }
+        hasStartedDialogue = true;
+        primeInt = 40;
 
-    IEnumerator Rond1Dialogue()
-    {
-        Char1name.text = "You";
-        Char1speech.text = "C'est des étagères pleines de vieux outils";
-        yield return new WaitUntil(() => Input.GetKeyDown("space"));
-        
-        Char1name.text = "YOU";
-        Char1speech.text = "Je pourrais peut-être fouiller...";
-        yield return new WaitUntil(() => Input.GetKeyDown("space"));
-        
-        EndDialogue();
-    }
-
-    public void Rond2_d()
-    {
-        if (!DialogueDisplay.activeSelf)
-        {
-            DialogueDisplay.SetActive(true);
-            primeInt = 1;
-            allowSpace = true;
-            StartCoroutine(Rond2Dialogue());
-        }
-    }
-
-    IEnumerator Rond2Dialogue()
-    {
-        Char1name.text = "You";
-        Char1speech.text = "C'est la porte du garage";
-        yield return new WaitUntil(() => Input.GetKeyDown("space"));
-        
-        Char1name.text = "YOU";
-        Char1speech.text = "Je pourrais peut-être l'ouvrir...";
-        yield return new WaitUntil(() => Input.GetKeyDown("space"));
-        
-        Char1name.text = "Jeda";
-        Char1speech.text = "Je tente ou pas ?";
-        nextButton.SetActive(false);
-        allowSpace = false;
-        Choice1a.SetActive(true);
-        Choice1b.SetActive(true);
-    }
-
-    public void Rond3_d()
-    {
-        if (!DialogueDisplay.activeSelf)
-        {
-            DialogueDisplay.SetActive(true);
-            primeInt = 1;
-            allowSpace = true;
-            StartCoroutine(Rond3Dialogue());
-        }
-    }
-
-    IEnumerator Rond3Dialogue()
-    {
-        Char1name.text = "You";
-        Char1speech.text = "C'est le compteur électrique";
-        yield return new WaitUntil(() => Input.GetKeyDown("space"));
-        
-        Char1name.text = "YOU";
-        Char1speech.text = "Je pourrais peut-être couper le courant...";
-        yield return new WaitUntil(() => Input.GetKeyDown("space"));
-        
-        Char1name.text = "Jeda";
-        Char1speech.text = "Je tente ou pas ?";
-        nextButton.SetActive(false);
-        allowSpace = false;
-        Choice2a.SetActive(true);
-        Choice2b.SetActive(true);
-    }
-
-    // Fonctions de choix
-    public void Choice1aFunct()
-    {
-        Char1name.text = "YOU";
-        Char1speech.text = "choix1 porte";
-        primeInt = 8;
-        Choice1a.SetActive(false);
-        Choice1b.SetActive(false);
+        DialogueDisplay.SetActive(true);
         nextButton.SetActive(true);
         allowSpace = true;
-        Next();
+        Next(); // On lance le Next direct
     }
+}
 
-    public void Choice1bFunct()
+public void Rond2_d()
+{
+    if (!hasStartedRond2)
     {
-        Char1name.text = "YOU";
-        Char1speech.text = "choix2 porte";
-        primeInt = 20;
-        Choice1a.SetActive(false);
-        Choice1b.SetActive(false);
+        hasStartedRond2 = true;
+        primeInt = 80;
+
+        // Active le dialogue et les contrôles
+        DialogueDisplay.SetActive(true);
         nextButton.SetActive(true);
         allowSpace = true;
-        Next();
+        Next(); // On lance le Next direct
     }
-
-public void Choice2aFunct()
-{
-    Char1name.text = "YOU";
-    Char1speech.text = "choix1 compteur";
-    primeInt = 20; // Mettre la bonne valeur qui correspond au compteur
-    Choice2a.SetActive(false);
-    Choice2b.SetActive(false);
+    // else  voir211 pour plus d'informations
+    // { 
+    //     primeInt = 199;
+    //     DialogueDisplay.SetActive(true);
+    //     nextButton.SetActive(true);
+    //     allowSpace = true;
+    //     Next(); // On lance le Next direct
+    // }
+}
+    
+// FUNCTIONS FOR BUTTONS TO ACCESS (Choice #1 and SceneChanges)
+public void Choice1aFunct(){
+    primeInt = 84;
+    Choice1a.SetActive(false);
+    Choice1b.SetActive(false);
     nextButton.SetActive(true);
     allowSpace = true;
-    Next(); // Forcer la suite du dialogue
 }
 
-public void Choice2bFunct()
-{
-    Char1name.text = "YOU";
-    Char1speech.text = "choix2 compteur";
-    primeInt = 21; // Ajuste la valeur pour correspondre à la suite correcte
-    Choice2a.SetActive(false);
-    Choice2b.SetActive(false);
+public void Choice1bFunct(){
+    primeInt = 94;
+    Choice1a.SetActive(false);
+    Choice1b.SetActive(false);
     nextButton.SetActive(true);
     allowSpace = true;
-    Next(); // Forcer la suite du dialogue
 }
 
+    
+        public void Rond4_d()
+        {
+            SceneManager.LoadScene("SceneCouloir");
+        }
 
-    public void Rond4_d()
-    {
-        SceneManager.LoadScene("SceneCouloir");
-    }
-}
+    }   
+
