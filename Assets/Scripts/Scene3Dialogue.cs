@@ -105,17 +105,18 @@ public class Scene3Dialogue : MonoBehaviour
                 break;
             
             // Après choix compteur
-            case 20:
-                Char1name.text = "You";
-                Char1speech.text = "Je suis le choix après 2";
-                primeInt++;
-                break;
-            
-            case 21:
-                Char1name.text = "You";
-                Char1speech.text = "On parle et parlotte toujours";
-                primeInt++;
-                break;
+case 20:
+    Char1name.text = "You";
+    Char1speech.text = "Je suis le choix après 2";
+    primeInt++;
+    break;
+
+case 21:
+    Char1name.text = "You";
+    Char1speech.text = "On parle et parlotte toujours";
+    primeInt++;
+    break;
+
             
             case 99:
                 Char1name.text = "YOU";
@@ -250,29 +251,30 @@ public class Scene3Dialogue : MonoBehaviour
         Next();
     }
 
-    public void Choice2aFunct()
-    {
-        Char1name.text = "YOU";
-        Char1speech.text = "choix1 compteur";
-        primeInt = 8;
-        Choice2a.SetActive(false);
-        Choice2b.SetActive(false);
-        nextButton.SetActive(true);
-        allowSpace = true;
-        Next();
-    }
+public void Choice2aFunct()
+{
+    Char1name.text = "YOU";
+    Char1speech.text = "choix1 compteur";
+    primeInt = 20; // Mettre la bonne valeur qui correspond au compteur
+    Choice2a.SetActive(false);
+    Choice2b.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+    Next(); // Forcer la suite du dialogue
+}
 
-    public void Choice2bFunct()
-    {
-        Char1name.text = "YOU";
-        Char1speech.text = "choix2 compteur";
-        primeInt = 20;
-        Choice2a.SetActive(false);
-        Choice2b.SetActive(false);
-        nextButton.SetActive(true);
-        allowSpace = true;
-        Next();
-    }
+public void Choice2bFunct()
+{
+    Char1name.text = "YOU";
+    Char1speech.text = "choix2 compteur";
+    primeInt = 21; // Ajuste la valeur pour correspondre à la suite correcte
+    Choice2a.SetActive(false);
+    Choice2b.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+    Next(); // Forcer la suite du dialogue
+}
+
 
     public void Rond4_d()
     {
