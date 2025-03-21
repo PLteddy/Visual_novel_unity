@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneGarage.unity
     guid: 4a3d3fd7e37a0264398f9ec911bf3f3d
+  - enabled: 1
+    path: Assets/Scenes/SceneCouloir.unity
+    guid: 42b4d9c4097e40d418f285fed7c8fda2
   m_configObjects: {}
