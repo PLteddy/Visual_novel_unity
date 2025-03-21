@@ -3,7 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class Scene3Dialogue : MonoBehaviour
+public class TEMPLATE : MonoBehaviour //Vous changez le nom template en fonction du nom de votre scène
 {
     //ça c pour déclarer les variables que vous allez utilisez dans le script 
     //Donc c ici que vous gérez les ajouts d'objets interactif ou de choix 
