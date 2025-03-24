@@ -2,8 +2,9 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class Scene3Dialogue : MonoBehaviour
+public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fonction du nom de votre scène
 {
     //ça c pour déclarer les variables que vous allez utilisez dans le script 
     //Donc c ici que vous gérez les ajouts d'objets interactif ou de choix 
@@ -22,6 +23,9 @@ public class Scene3Dialogue : MonoBehaviour
     public GameObject Choice2a;
     public GameObject Choice2b;
     public GameObject nextButton;
+    public TMP_InputField nameInputField; // Champ texte où le joueur entre son nom
+    public GameObject namePrompt; // Le panel contenant l'input field et le bouton de validation
+    public Button validateNameButton; // Bouton pour valider le nom
 
 
     private bool allowSpace = true;// !ne pas touchez!
@@ -31,7 +35,7 @@ public class Scene3Dialogue : MonoBehaviour
 
     //Variable pour vérifier que le joueur est déjà passé par là
     //a chaque fois que vous rajouter un dialogue + un bouton genre rond 5 vous devez mettre une variable pour vérifier
-    private bool firstTime; 
+    private bool firstTime; //on touche pas
     private bool hasStartedDialogue = false;
     private bool hasStartedRond2 = false;
     private bool hasStartedRond3 = false;
@@ -54,6 +58,10 @@ public class Scene3Dialogue : MonoBehaviour
     Choice2a.SetActive(false);
     Choice2b.SetActive(false);
     nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
+    namePrompt.SetActive(false); // Cache la saisie de nom au départ
+    validateNameButton.gameObject.SetActive(false); 
+    nameInputField.gameObject.SetActive(false);
+
 
     //pas toucher à part pour changer le nom de la variable 
     firstTime = PlayerPrefs.GetInt("SceneGarageFirstTime", 0) == 0;
@@ -92,30 +100,47 @@ public class Scene3Dialogue : MonoBehaviour
 
 
 
-        //Dialogue d'introduction quand on rentre dans la salle pour la première fois
-        if (primeInt == 1)
-        {
-            ArtChar1a.SetActive(true); //active l'image du personnage
-            Char1name.text = GameHandler.playerName;  //le nom du personnage faudra changer mettre la variable et remplacer
-            Char1speech.text = "Je suis dans un garage"; //là c les dialogues
-            primeInt++; //pour que ça incrémente le dialogue 
-        }
-        else if (primeInt == 2)
-        {
-            Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je ne reconnais pas cet endroit...";
-            primeInt++;
-        }
-        else if (primeInt == 3)
-        {
-            Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Peut-être que je devrais explorer un peu";
-            primeInt++;
-        }
-        else if (primeInt == 4)
-        {
-            EndDialogue(); //emmène à la clôture du dialogue
-        }
+if (primeInt == 1)
+{
+    ArtChar1a.SetActive(true);
+    Char1name.text = "???"; // Le personnage ne se souvient pas de son nom
+    Char1speech.text = "Ohlala... Comment je m'appelle déjà ?";
+    primeInt++;
+}
+else if (primeInt == 2)
+{
+    Char1name.text = "???";
+    Char1speech.text = "Je suis incapable de me souvenir...";
+    primeInt++;
+}
+else if (primeInt == 3)
+{
+    Char1name.text = "???";
+    Char1speech.text = "Peut-être que si je me concentre, ça va me revenir.";
+    primeInt++;
+
+}
+else if (primeInt == 4)
+{
+    DialogueDisplay.SetActive(false); // Cache la boîte de dialogue
+    
+    namePrompt.SetActive(true); // Affiche l'input field pour taper son nom
+    validateNameButton.gameObject.SetActive(true); 
+    nameInputField.gameObject.SetActive(true);
+}
+else if (primeInt == 5)
+{
+    namePrompt.SetActive(false); // Cache l'input field après validation
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Ah oui, bien sûr ! Je m'appelle " + GameHandler.playerName + " !";
+    primeInt++;
+}
+
+else if (primeInt == 6)
+{
+    EndDialogue();//emmène à la clôture du dialogue
+}
+
         else if (primeInt == 99) // Cas du "je suis déjà passé"
         {
            
@@ -157,7 +182,7 @@ public class Scene3Dialogue : MonoBehaviour
         if (primeInt == 80)
         {
             ArtChar1a.SetActive(true);
-           Char1name.text = GameHandler.playerName; 
+            Char1name.text = GameHandler.playerName; 
             Char1speech.text = "C'est la porte du garage";
             primeInt++;
         }
@@ -518,6 +543,25 @@ public void Choice2bFunct(){
 }
 //ATTENTION POUR LES RAJOUTS DES CHOIX IL FAUT BIEN FAIRE EN SORTE QUE VOUS AVEZ RAJOUTE DES BOUTONS EN HAUT DU FICHIER 
 // ET QUE VOUS AVEZ BIEN ACTIVE LE ONCLIK DANS L'INSPECTEUR ET RELIE A LA BONNE FONCTION SI VOUS Y ARRIVEZ PAS DEMANDEZ MOI. 
+
+public void SaveName()
+{
+    if (!string.IsNullOrEmpty(nameInputField.text)) // Vérifie que le champ n'est pas vide
+    {
+        GameHandler.SetPlayerName(nameInputField.text); // Stocke le nom dans GameHandler
+        
+        // Cache l'interface de saisie du nom
+        namePrompt.SetActive(false); 
+        validateNameButton.gameObject.SetActive(false); 
+        nameInputField.gameObject.SetActive(false);
+
+        // Réaffiche la boîte de dialogue
+        DialogueDisplay.SetActive(true); 
+
+        primeInt = 5; // Passe au dialogue suivant
+        Next(); // Affiche le prochain dialogue
+    }
+}
 
 
 

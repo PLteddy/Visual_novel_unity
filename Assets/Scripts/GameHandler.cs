@@ -28,6 +28,14 @@ public class GameHandler : MonoBehaviour {
     public static float timeRemaining = 3600f; // Temps restant avant la fin (1 heure)
     public static bool timerIsRunning = true; // Indique si le timer est en cours
     public TextMeshProUGUI timerText; // Texte affichant le temps restant
+    
+
+    public static string playerName = "You"; // Valeur par défaut
+
+    public static void SetPlayerName(string name)
+    {
+        playerName = name; // Stocke le nom saisi
+    }
 
     void Awake(){
         // Initialise le volume et lie le slider du menu pause
@@ -37,6 +45,7 @@ public class GameHandler : MonoBehaviour {
             sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
             sliderVolumeCtrl.value = volumeLevel;
         }
+         DontDestroyOnLoad(gameObject);
     }
 
     void Start(){
@@ -114,6 +123,7 @@ public class GameHandler : MonoBehaviour {
         playerHealth = 10;
         timeRemaining = 3600f;
         timerIsRunning = true;
+        GameHandler.playerName = ""; // Réinitialisation du nom
     }
 
     // Affiche le temps restant sous format "MM:SS" à voir si on change ça plus tard 
