@@ -18,10 +18,19 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     public GameObject Rond2;
     public GameObject Rond3;
     public GameObject Rond4;
-    public GameObject Choice1a;//c les boutons qui permettent de choisir les choix il faut copier et coller pour en rajouter
-    public GameObject Choice1b;
-    public GameObject Choice2a;
-    public GameObject Choice2b;
+    public GameObject Choice1aForce;
+    public GameObject Choice1bIntelligence;
+    public GameObject Choice2aOuvrirArmoire;
+    public GameObject Choice3aPiedBiche;//c les boutons qui permettent de choisir les choix il faut copier et coller pour en rajouter
+    public GameObject Choice3bAutreSolution;
+    public GameObject Choice4aArranger;
+    public GameObject Choice4bPeter;
+    public GameObject Choice5aSauter;
+    public GameObject Choice5bPasSauter;
+    public GameObject Choice6aTable;
+    public GameObject Choice7aTapis;
+    public GameObject Choice8aTrappe;
+    public GameObject Choice8bAutreSolution;
     public GameObject nextButton;
     public TMP_InputField nameInputField; // Champ texte où le joueur entre son nom
     public GameObject namePrompt; // Le panel contenant l'input field et le bouton de validation
@@ -39,12 +48,14 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     private bool hasStartedDialogue = false;
     private bool hasStartedRond2 = false;
     private bool hasStartedRond3 = false;
+    private bool hasStartedRond4 = false;
+    private bool piedDeBiche = false;
 
     void Start()
 {
     //pour tester le premier passage à chaque fois :
     //!toucher seulement le nom de la variable ou me demander pour savoir si on retire le truc en bas! 
-    PlayerPrefs.DeleteKey("SceneGarageFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
+    PlayerPrefs.DeleteKey("SceneGrenierFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
 
     DialogueDisplay.SetActive(false);//cache la bulle de dialogue
     ArtChar1a.SetActive(false);//cache l'image du personnage 
@@ -53,10 +64,19 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     Rond2.SetActive(false);
     Rond3.SetActive(false);
     Rond4.SetActive(false);
-    Choice1a.SetActive(false);//cache les boutons de choix
-    Choice1b.SetActive(false);
-    Choice2a.SetActive(false);
-    Choice2b.SetActive(false);
+    Choice1aForce.SetActive(false);//cache les boutons de choix
+    Choice1bIntelligence.SetActive(false);
+    Choice2aOuvrirArmoire.SetActive(false);
+    Choice3bAutreSolution.SetActive(false);
+    Choice3aPiedBiche.SetActive(false);
+    Choice4aArranger.SetActive(false);
+    Choice4bPeter.SetActive(false);
+    Choice5aSauter.SetActive(false);
+    Choice5bPasSauter.SetActive(false);
+    Choice6aTable.SetActive(false);
+    Choice7aTapis.SetActive(false);
+    Choice8aTrappe.SetActive(false);
+    Choice8bAutreSolution.SetActive(false);
     nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
     namePrompt.SetActive(false); // Cache la saisie de nom au départ
     validateNameButton.gameObject.SetActive(false); 
@@ -64,7 +84,7 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
 
 
     //pas toucher à part pour changer le nom de la variable 
-    firstTime = PlayerPrefs.GetInt("SceneGarageFirstTime", 0) == 0;
+    firstTime = PlayerPrefs.GetInt("SceneGrenierFirstTime", 0) == 0;
 
     if (firstTime)// si c la première fois ça fait appraître un dialogue pour la découverte de la salle
     {
@@ -72,7 +92,7 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
         DialogueDisplay.SetActive(true); // la bulle de dialogue apparaît
         nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
         Next(); //Quand vous voyez ça veut dire que ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
-        PlayerPrefs.SetInt("SceneGarageFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
+        PlayerPrefs.SetInt("SceneGrenierFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
     }
     else //sinon ça fait un autre dialogue en mode g déjà vu ça
     {
@@ -135,249 +155,557 @@ else if (primeInt == 5)
     Char1speech.text = "Ah oui, bien sûr ! Je m'appelle " + GameHandler.playerName + " !";
     primeInt++;
 }
-
 else if (primeInt == 6)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Je me souviens de tout maintenant !";
+    primeInt++;
+}
+else if (primeInt == 7)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Je rentrais de l'école quand un homme m'a frappé à la tête part derrière avec une batte. Ça m'a direct mis KO.";
+    primeInt++;
+}
+else if (primeInt == 8)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "La dernière chose dont je me souviens c'est le bruit d'une voiture allant à toute vitesse.";
+    primeInt++;
+}
+else if (primeInt == 9)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Il a dû me mettre dans le coffre de sa voiture et m'emmener… je ne sais pas où… ";
+    primeInt++;
+}
+else if (primeInt == 10)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Je comprend même pas pourquoi cet homme m'a kidnappé, ça me fait peur...";
+    primeInt++;
+}
+else if (primeInt == 11)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Allez ressaisis toi! ce n'est pas comme ça que je pourrais sortir de là surtout qu'il peut revenir!";
+    primeInt++;
+}
+else if (primeInt == 12)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Il faut que je me tire de là mais comment me défaire de ces cordes? Je pourrais…";
+    primeInt++;
+}
+//Premier choix du joueur
+else if (primeInt == 13){  //C'est pour les choix faites attention ici où ça va pas marcher
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Je pourrais…";
+    nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
+    allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
+    Choice1aForce.SetActive(true);//active les choix possibles
+    Choice1bIntelligence.SetActive(true);//active les choix possibles
+    
+}
+
+// après le choix 2a Où on utilise la force
+else if (primeInt == 15){
+
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Bon comment je vais faire? Avec la force de mes bras j'essaye de tirer sur la corde mais sans espoir, ça me fait si mal. ";
+    primeInt++;
+}
+else if (primeInt == 16)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Je commence à m'essouffler à essayez de tirer cette corde avec mes mains, mes bras, mes pieds, mes dents...";
+    primeInt++;
+}
+else if (primeInt == 17)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "tout ce qui pourrait m'aider à créer suffisamment d'espace pour que je puisse m'échapper. Mais rien n'y fais… ";
+    primeInt++;
+}
+else if (primeInt == 18)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Même ronger la corde avec mes dents ne change rien, il y a que dans les films que ça marche.";
+    primeInt++;
+}
+else if (primeInt == 19)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "En désespoir de cause, je me bascule de gauche à droite sur la chaise pour me faire tomber. Aller un peu de nerd !";
+    primeInt++;
+}
+else if (primeInt == 20)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Avec de l'acharnement, je prend de la vitesse, la chaise tombe avec moi.";
+    primeInt++;
+}
+else if (primeInt == 21)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Outch... ça fais mal à la tête (- 1 de vie), je n'avais pas pensé au fait que je n'aurais pas mes mains pour me réceptionner";
+    primeInt++;
+}
+else if (primeInt == 22)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "mais la technique à quand même été efficace ! ";
+    primeInt++;
+}
+else if (primeInt == 23)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "En tombant la pauvre chaise en bois c'est cassé, ça a créer assez d'espace pour que je m'extirpe de là.";
+    primeInt=30;
+}
+
+
+// après le choix 1b Où on utilise l'intelligence
+else if (primeInt == 25){
+
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Comment c'était déjà dans les vidéos de comment se défaire de ces lien, ça va mettre utile finalement !";
+    primeInt++;
+}
+else if (primeInt == 26){
+
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Ah oui, il faut que je fasse passer la corde qui me retiens à la chaise à l'intérieur du bout de corde qui sert mon poignet";
+    primeInt++;
+}
+else if (primeInt == 27){
+
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "comme ça, ça créer un espace pour que je puisse retirer la corde qui me ligote à cet foutu chaise et voilà !";
+    primeInt++;
+}
+else if (primeInt == 28){
+
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Pfiou moi qui pensait que j'étais parano à regarder ce genre de vidéo.";
+    primeInt = 24;
+}
+else if (primeInt == 24)
+{
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Maintenant je peux accéder aux restes de la pièce, il faut que je l'inspecte pour trouver une sortie.";
+    primeInt = 30;
+}
+else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
 {
     EndDialogue();//emmène à la clôture du dialogue
 }
 
-        else if (primeInt == 99) // Cas du "je suis déjà passé"
-        {
-           
-            Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je suis déjà passé par ici...";
-            primeInt = 100;
-        }
-        else if (primeInt == 100)
-        {
-            EndDialogue();//emmène à la clôture du dialogue
-        }
+        
 
-//rond1_d
+//rond1Porte
     if (primeInt == 40)
     {
         ArtChar1a.SetActive(true);
         Char1name.text = GameHandler.playerName; 
-        Char1speech.text = "C'est des étagères pleines de vieux outils";
+        Char1speech.text = "Est ce que je pourrais simplement passé par la porte ?";
+        //changement de scène à voir plus tard
         primeInt++;
     }
     else if (primeInt == 41)
     {
-        Char1name.text = GameHandler.playerName; 
-        Char1speech.text = "Je pourrais peut être fouiller et trouver quelque chose d'utilile";
-        primeInt++;
+        SceneManager.LoadScene("ScenePorte");
     }
-    else if (primeInt == 42)
+
+//rond2Armoire
+    else if (primeInt == 50){  //C'est pour les choix faites attention ici où ça va pas marcher
+        Char1name.text = GameHandler.playerName; 
+        Char1speech.text = "Cet armoire à l'air bancale, que devrais-je faire ?";
+        nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
+        allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
+        Choice2aOuvrirArmoire.SetActive(true);//active les choix possibles
+        
+        
+    
+    }
+    else if (primeInt == 51)
     {
-        Char1name.text = GameHandler.playerName; 
-        Char1speech.text = "Il n'y avait rien d'intéressant";
-        primeInt++;
+
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "J'ai toujours eu peur d'ouvrir les armoires sans savoir ce qu'il y a à l'intérieur...";
+    primeInt++;
     }
-    else if (primeInt == 43)
+    else if (primeInt == 52)
+    {
+
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "J'ouvre précautionneusement l'armoire pour y découvrir... un pied de biche usagé sur le coin de l'armoire.";
+    primeInt++;
+    }
+    else if (primeInt == 53)
+    {
+    
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "J'ai pris le pied de biche, on ne sait jamais si il peut me servir à quelque chose.";
+    piedDeBiche = true;
+    primeInt++;
+    }
+    else if (primeInt == 54)
     {
         EndDialogue();
     }
+    else if (primeInt == 55) // Cas du "je suis déjà passé"
+        {
+           
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "...";
+            nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
+            allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
+            Choice3aPiedBiche.SetActive(true);//active les choix possibles
+            Choice3bAutreSolution.SetActive(true);
+        }
+        else if (primeInt == 56)
+        {
+            EndDialogue();//emmène à la clôture du dialogue
+        }
+        //Quand on revient sur le bouton de l'armoire pour la bouger
+        else if (primeInt == 58)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Avec le pied de biche que j'ai récupérer je peux bouger cet armoire.";
+            primeInt++;
+        }
+        else if (primeInt == 59)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Je place mon outils sur le côté droit de l'armoire pour faire un levier.";
+            primeInt++;
+        }
+        else if (primeInt == 60)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "À la une !";
+            primeInt++;
+        }
+        
+        else if (primeInt == 60)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "À la deux ! À la trois !";
+            primeInt++;
+        }
+        else if (primeInt == 61)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "En poussant sur mon levier improvisé de fortune de toute mes forces, l'armoire tombe à la renverse sur le côté,";
+            primeInt++;
+        }
+        else if (primeInt == 62)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "me laissant apercevoir une bouche d'aération derrière celle-ci !";
+            primeInt++;
+        }
+        else if (primeInt == 63)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Par contre, le pied de biche n'a pas tenu le coup, je ne pourrais plus l'utiliser.";
+            primeInt++;
+        }
+        else if (primeInt == 64)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Ce n'est pas grave je vois enfin une possibilité de sortir de cette pièce !";
+            primeInt++;
+        }
+        else if (primeInt == 65)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Je m'infiltre dans le conduit d'aération… ";
+            primeInt++;
+        }
+        else if (primeInt == 66)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Il fait noir, je sens la canalisation grincer, elle pourrait s'effondrer à tout moment ! ";
+            primeInt++;
+        }
+        else if (primeInt == 67)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Comme si quelqu'un m'avait entendu le sol s'effondre sous moi et je tombe dans les abysses.";
+            primeInt++;
+        }
+        else if (primeInt == 68)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "HHHHHHHHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            primeInt++;
+        }
+        else if (primeInt == 69)
+        {
+            SceneManager.LoadScene("SceneSalledebain");
+        }
 
-//rond2_d
-        if (primeInt == 80)
+
+
+//Rond3Fenêtre
+
+        if (primeInt == 70)
         {
             ArtChar1a.SetActive(true);
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "C'est la porte du garage";
+            Char1speech.text = "Oh je pourrais m'échapper par la fenêtre, non ?";
             primeInt++;
         }
-        else if (primeInt == 81)
+        else if (primeInt == 71)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je pourrais peut être l'ouvrir et m'echapper";
+            Char1speech.text = "J'essaye de l'ouvrir mais je n'arrive pas à l'ouvrir, elle a l'air bloqué,";
             primeInt++;
         }
-        else if (primeInt == 82)
+        else if (primeInt == 72)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "avec un peu de force ";
+            Char1speech.text = "elle est pas toute jeune et ce n'est même pas du double vitrage…";
             primeInt++;
         }
-
-else if (primeInt == 83){  //C'est pour les choix faites attention ici où ça va pas marcher
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je tente ou pas ?";
-    nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
-    allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
-    Choice1a.SetActive(true);//active les choix possibles
-    Choice1b.SetActive(true);//active les choix possibles
-}
-
-// après le choix 1a
-else if (primeInt == 84){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "choix1 porte";
-    primeInt = 85; 
-}
-else if (primeInt == 85){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je suis le choix après 1";
-    primeInt++;
-}
-else if (primeInt == 86){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "On parle et parlote";
-    primeInt++;
-}
-else if (primeInt == 87){
-    EndDialogue();
-}
-
-// après le choix 1b
-else if (primeInt == 94){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "choix2 porte";
-    primeInt = 95; 
-}
-else if (primeInt == 95){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je suis le choix après 2";
-    primeInt++;
-}
-else if (primeInt == 96){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "on parle et parlotte toujours";
-    primeInt++;
-}
-else if (primeInt == 97){
-    EndDialogue();
-}
-
-
-//Rond3_d
-
-        if (primeInt == 120)
-        {
-            ArtChar1a.SetActive(true);
-            Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "C'est la porte du garage";
-            primeInt++;
-        }
-        else if (primeInt == 121)
+        else if (primeInt == 73)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je pourrais peut être l'ouvrir et m'echapper";
+            Char1speech.text = "Mais bien sûr comme si ça pouvait être simple…";
             primeInt++;
         }
-        else if (primeInt == 122)
-        {
+
+        else if (primeInt == 74){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "avec un peu de force ";
-            primeInt++;
+            Char1speech.text = "Est ce que je pourrais…";
+            nextButton.SetActive(false);
+            allowSpace = false;
+            Choice4aArranger.SetActive(true);
+            Choice4bPeter.SetActive(true);
         }
 
-else if (primeInt == 123){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je tente ou pas ?";
-    nextButton.SetActive(false);
-    allowSpace = false;
-    Choice2a.SetActive(true);
-    Choice2b.SetActive(true);
-}
-
-// après choix 2a
-else if (primeInt == 124){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "choix1 porte";
-    primeInt = 125; 
-}
-else if (primeInt == 125){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je suis le choix après 1";
-    primeInt++;
-}
-else if (primeInt == 126){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "On parle et parlote";
-    primeInt++;
-}
-else if (primeInt == 127){
-    EndDialogue();
-}
-
-// après choix 2b
-else if (primeInt == 144){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "choix2 porte";
-    primeInt = 145; 
-}
-else if (primeInt == 145){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je suis le choix après 2";
-    primeInt++;
-}
-else if (primeInt == 146){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "on parle et parlotte toujours";
-    primeInt++;
-}
-else if (primeInt == 147){
-    EndDialogue();
-}
-
-
-
-
-// Dialogue lorsqu'on on rappuie sur les boutons 
-
-//rond1
-        if (primeInt == 199)
-        {
+        // après choix 4a d'arranger la fenêtre
+        else if (primeInt == 75){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je suis déjà passé par là.";
+            Char1speech.text = "Si j'arrange la fenêtre en comprenant pourquoi elle ne s'ouvre pas je devrais pouvoir ouvrir cet foutu fenêtre. ";
             primeInt++;
         }
-        else if (primeInt == 200)
-        {
+        else if (primeInt == 76){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je ne vais pas perdre mon temps ici.";
+            Char1speech.text = "J'inspecte la fenêtre de tout les angles en espérant trouver quelque chose qui explique son entêtement… ";
             primeInt++;
         }
-        else if (primeInt == 201)
-        {
-            EndDialogue();
+        else if (primeInt == 77){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "On dirait que la poignée de la fenêtre est coincé par un bout de métal qui passe de par et d'autres de la poignée.";
+            primeInt++;
+        }
+        else if (primeInt == 78){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "En l'enlevant délicatement, je peux maintenant ouvrir la fenêtre !";
+            primeInt = 84;
         }
 
-        //rond2
-        if (primeInt == 299)
-        {
+        //après choix 4b de péter la fenêtre
+        else if (primeInt == 79){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je suis déjà passé par là.";
+            Char1speech.text = "Aller j'ai pas de temps à perdre, je dois vite sortir de là. ";
             primeInt++;
         }
-        else if (primeInt == 300)
-        {
+        else if (primeInt == 80){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je ne vais pas perdre mon temps ici.";
+            Char1speech.text = "Je m'éloigne de la fenêtre et je cours dans sa direction pour défoncer la fenêtre avec mon épaule";
             primeInt++;
         }
-        else if (primeInt == 301)
-        {
+        else if (primeInt == 81){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "comme pour enfoncer une porte avec mon épaule.";
+            primeInt++;
+        }
+        else if (primeInt == 82){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "J'aurais dû le voir venir, un bout de verre c'est planté dans mon bras… (-2 de vie)";
+            primeInt++;
+        }
+        else if (primeInt == 83){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Aïe Aïe Aïe, ça fait un mal de chien mais au moins je peux passer par la fenêtre mais voyons d'abord ce qu'il y a en dessous.";
+            primeInt++;
+        }
+        //Les choix se rejoigne ici
+        else if (primeInt == 84){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Je suis au deuxième ou troisième étage peur être, en dessous de moi il y a le jardin.";
+            primeInt++;
+        }
+        else if (primeInt == 85){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Si je descend j'atterrirais dans de l'herbe,";
+            primeInt++;
+        }
+        else if (primeInt == 86){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "ce n'est pas du goudron heureusement mais je ne sais pas si ce n'est pas trop haut pour moi.";
+            primeInt++;
+        }
+        else if (primeInt == 87){  //C'est pour les choix faites attention ici où ça va pas marcher
+        Char1name.text = GameHandler.playerName; 
+        Char1speech.text = "Que devrais-je faire ?";
+        nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
+        allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
+        Choice5aSauter.SetActive(true);//active les choix possibles
+        Choice5bPasSauter.SetActive(true);
+        
+        }
+        // Après le choix de sauter
+        else if (primeInt == 90){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Il faut vraiment que je sorte de là au plus vite avant que l'autre taré ne revienne… ";
+            primeInt++;
+        }
+        else if (primeInt == 91){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Je prend mon courage à deux mains et je passe part la fenêtre que j'ai brisé,";
+            primeInt++;
+        }
+        else if (primeInt == 92){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "m'accroupissant sur le rebord de la fenêtre et je saute ! ";
+            primeInt++;
+        }
+        else if (primeInt == 93){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Quand mes pieds ce réceptionne sur le sol, j'entends mes os craquer. ARRRRRGHH, je n'ai jamais senti une douleur aussi intense !";
+            primeInt++;
+        }
+        else if (primeInt == 94){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "A cause de la douleur, je suis tombé à la renverse. Je suis maintenant allongée sur le sol incapable de bouger… ";
+            primeInt++;
+        }
+        else if (primeInt == 95){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Je sens que ma vision se brouille, je me sens partir, j'ai froid, est ce que c'est la fin ?";
+            primeInt++;
+        }
+        else if (primeInt == 95){
+            SceneManager.LoadScene("SceneLoose");
+        }
+
+        //Ne pas sauter
+        else if (primeInt == 96){
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "C'est trop risqué, je vais voir pour trouver une autre solution.";
+            primeInt++;
+        }
+        else if (primeInt == 97){
             EndDialogue();
         }
 
 
-        //rond3
-                if (primeInt == 399)
+
+//rond4 Table
+        if (primeInt == 100)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je suis déjà passé par là.";
+            Char1speech.text = "Je suis sûr qu'il y a quelque chose sous la table. ";
             primeInt++;
         }
-        else if (primeInt == 400)
+        else if (primeInt == 101)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je ne vais pas perdre mon temps ici.";
+            Char1speech.text = "Je regarde sous la table en espérant un indice comme dans l'escape game que j'ai fait avec ma famille…";
             primeInt++;
         }
-        else if (primeInt == 401)
+        else if (primeInt == 102)
         {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Mais le seul truc que j'ai trouvé, c'est la nostalgie d'être loin de ma famille pendant que moi je suis dans cet endroit sordide…";
+            primeInt++;
+        }
+        else if (primeInt == 103){  //C'est pour les choix faites attention ici où ça va pas marcher
+        Char1name.text = GameHandler.playerName; 
+        Char1speech.text = "Je me demande ce que je peux faire d'autre?";
+        nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
+        allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
+        Choice6aTable.SetActive(true);//active les choix possibles
+        
+        }
+        else if (primeInt == 104)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Je peux bouger la table mais rien ne se passe…";
+            primeInt++;
+        }
+        else if (primeInt == 105){  //C'est pour les choix faites attention ici où ça va pas marcher
+        Char1name.text = GameHandler.playerName; 
+        Char1speech.text = "Je me demande ce que je peux faire d'autre?";
+        nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
+        allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
+        Choice7aTapis.SetActive(true);
+        
+        }
+        else if (primeInt == 106)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Et sous le tapis ? Il n'y aurait pas quelque chose?";
+            primeInt++;
+        }
+        else if (primeInt == 107)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Bingo une trappe ! Mais elle est bloqué et il y a pas l'air d'avoir de clé, est ce qu'il y aurait quelque chose qui pourrait m'aider ?";
+            primeInt++;
+        }
+        else if (primeInt == 108){  //C'est pour les choix faites attention ici où ça va pas marcher
+            if (piedDeBiche)
+            {
+                Char1name.text = GameHandler.playerName; 
+                Char1speech.text = "Je me demande ce que je peux faire d'autre?";
+                nextButton.SetActive(false); // ça fait en sorte qu'on ne puisse pas passer le dialogue 
+                allowSpace = false; // N'autorise pas le passage au dialogue suivant avec la barre espace
+                Choice8aTrappe.SetActive(true); // active les choix possibles
+                primeInt = 110;
+            }
+            else
+            {
+                Char1name.text = GameHandler.playerName;
+                Char1speech.text = "Il me manque quelque chose, je reviendrai plus tard.";
+                primeInt++;
+            }
+        
+        }
+        else if(primeInt == 109){
             EndDialogue();
+        }
+        else if(primeInt == 110){
+            Char1speech.text = "En imbriquant le pied de biche dans la fente de la trappe, je pousse de toute mes forces pour faire un effet de levier.";
+        }
+          
+        
+        else if (primeInt == 111)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Après quelque effort, j'arrive à ouvrir la trappe.";
+            primeInt++;
+        }
+        else if (primeInt == 112)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Par contre, le pied de biche n'a pas tenu le coup, je ne pourrais plus l'utiliser.";
+            primeInt++;
+        }
+        else if (primeInt == 113)
+        {
+            Char1name.text = GameHandler.playerName; 
+            Char1speech.text = "Une échelle descend vers le bas et je la descend prudemment.";
+            primeInt++;
+        }
+        else if (primeInt == 113)
+        {
+            SceneManager.LoadScene("SceneSalledebain");
         }
 
  
@@ -440,7 +768,7 @@ public void Rond2_d()//pareil que rond1
     if (!hasStartedRond2) // Si non visité
     {
         hasStartedRond2 = true;
-        primeInt = 80;
+        primeInt = 50;
 
         
         Rond1.SetActive(false);
@@ -456,7 +784,7 @@ public void Rond2_d()//pareil que rond1
     }
     else if (hasStartedRond2) // Si déjà visité
     {
-        primeInt = 299; 
+        primeInt = 55; 
 
         Rond1.SetActive(false);
         Rond2.SetActive(false);
@@ -476,7 +804,7 @@ public void Rond3_d() //pareil que rond1
     if (!hasStartedRond3)// Si non visité
     {
         hasStartedRond3 = true;
-        primeInt = 120;
+        primeInt = 70;
 
        
         Rond1.SetActive(false);
@@ -492,7 +820,41 @@ public void Rond3_d() //pareil que rond1
     }
     else if (hasStartedRond3) // Si déjà visité
     {
-        primeInt = 399; 
+        primeInt = 87; 
+
+        Rond1.SetActive(false);
+        Rond2.SetActive(false);
+        Rond3.SetActive(false);
+        Rond4.SetActive(false);
+        DialogueDisplay.SetActive(true);
+        nextButton.SetActive(true);
+        allowSpace = true;
+        Next(); 
+    }
+}
+
+public void Rond4_d()
+{
+    if (!hasStartedRond4)// Si non visité
+    {
+        hasStartedRond4 = true;
+        primeInt = 100;
+
+       
+        Rond1.SetActive(false);
+        Rond2.SetActive(false);
+        Rond3.SetActive(false);
+        Rond4.SetActive(false);
+
+       
+        DialogueDisplay.SetActive(true);
+        nextButton.SetActive(true);
+        allowSpace = true;
+        Next(); 
+    }
+    else if (hasStartedRond4) // Si déjà visité
+    {
+        primeInt = 108; 
 
         Rond1.SetActive(false);
         Rond2.SetActive(false);
@@ -507,37 +869,96 @@ public void Rond3_d() //pareil que rond1
 
 
 
-
 // FUNCTIONS FOR BUTTONS TO ACCESS (Choice #1 and SceneChanges)
 //ça c pour que ça sache sur quel bouton on a cliqué et donc sur quel dialogue on va déboucher
-public void Choice1aFunct(){
-    primeInt = 84;
-    Choice1a.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
-    Choice1b.SetActive(false);
+
+
+public void Choice1aForceFunct(){
+    primeInt = 15;
+    Choice1aForce.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
+    Choice1bIntelligence.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice1bIntelligenceFunct(){
+    primeInt = 25;
+    Choice1aForce.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
+    Choice1bIntelligence.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice2aOuvrirArmoireFunct(){
+    primeInt = 51;
+    Choice2aOuvrirArmoire.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice3aPiedBicheFunct(){
+    primeInt = 56;
+    Choice3aPiedBiche.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
+    Choice3bAutreSolution.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice3bAutreSolutionFunct(){
+    primeInt = 56;
+    Choice3aPiedBiche.SetActive(false);
+    Choice3bAutreSolution.SetActive(false);
     nextButton.SetActive(true);
     allowSpace = true;
 }
 
-public void Choice1bFunct(){
-    primeInt = 94;
-    Choice1a.SetActive(false);
-    Choice1b.SetActive(false);
+public void Choice4aArrangerFunct(){
+    primeInt = 75;
+    Choice4aArranger.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
+    Choice4bPeter.SetActive(false);
     nextButton.SetActive(true);
     allowSpace = true;
 }
 
-public void Choice2aFunct(){
-    primeInt = 124;
-    Choice2a.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
-    Choice2b.SetActive(false);
+public void Choice4bPeterFunct(){
+    primeInt = 79;
+    Choice4aArranger.SetActive(false);
+    Choice4bPeter.SetActive(false);
     nextButton.SetActive(true);
     allowSpace = true;
 }
-
-public void Choice2bFunct(){
-    primeInt = 144;
-    Choice2a.SetActive(false);
-    Choice2b.SetActive(false);
+public void Choice5aSauterFunct(){
+    primeInt = 90;
+    Choice5aSauter.SetActive(false);
+    Choice5bPasSauter.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice5bPasSauterFunct(){
+    primeInt = 96;
+    Choice5aSauter.SetActive(false);
+    Choice5bPasSauter.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice6aTableFunct(){
+    primeInt = 104;
+    Choice6aTable.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice7aTapisFunct(){
+    primeInt = 106;
+    Choice7aTapis.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice8aTrappeFunct(){
+    primeInt = 110;
+    Choice8aTrappe.SetActive(false);
+    nextButton.SetActive(true);
+    allowSpace = true;
+}
+public void Choice8bAutreSolutionFunct(){
+    primeInt = 109;
+    Choice8bAutreSolution.SetActive(false);
+    Choice8aTrappe.SetActive(false);
     nextButton.SetActive(true);
     allowSpace = true;
 }
@@ -564,17 +985,7 @@ public void SaveName()
 }
 
 
-
-    //ça c si jamais vous voulez pas de dialogues mais genre allez dans une salle ou retourner en arrière
-        public void Rond4_d()
-        {
-            //Il faut que ça ait le même nom que la scène si ça ne marche pas il faut me demander 
-            //de faire un truc mais ça touche le github donc ne le faites pas sans en parler sinon ça va tout casser
-            SceneManager.LoadScene("SceneCouloir");
-        }
-
 }
-    
 
 
 
