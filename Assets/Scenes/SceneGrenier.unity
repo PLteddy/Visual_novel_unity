@@ -736,11 +736,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
   m_PrefabInstance: {fileID: 251321415}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &338574041 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 701081767310907061, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
-  m_PrefabInstance: {fileID: 1857326560}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &338574045 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8840837228504757848, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
@@ -1517,11 +1512,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &944848520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 701081767310907061, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
-  m_PrefabInstance: {fileID: 438551417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &944848524 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8840837228504757848, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
@@ -1669,10 +1659,19 @@ MonoBehaviour:
   Rond2: {fileID: 1183777391}
   Rond3: {fileID: 421931357}
   Rond4: {fileID: 103770854}
-  Choice1a: {fileID: 338574041}
-  Choice1b: {fileID: 1997552936}
-  Choice2a: {fileID: 1398013173}
-  Choice2b: {fileID: 944848520}
+  Choice1aForce: {fileID: 0}
+  Choice1bIntelligence: {fileID: 0}
+  Choice2aOuvrirArmoire: {fileID: 0}
+  Choice3aPiedBiche: {fileID: 0}
+  Choice3bAutreSolution: {fileID: 0}
+  Choice4aArranger: {fileID: 0}
+  Choice4bPeter: {fileID: 0}
+  Choice5aSauter: {fileID: 0}
+  Choice5bPasSauter: {fileID: 0}
+  Choice6aTable: {fileID: 0}
+  Choice7aTapis: {fileID: 0}
+  Choice8aTrappe: {fileID: 0}
+  Choice8bAutreSolution: {fileID: 0}
   nextButton: {fileID: 1309763115}
   nameInputField: {fileID: 982628371}
   namePrompt: {fileID: 1426026056}
@@ -2451,11 +2450,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2780222208926299233, guid: 1c1bc4909f5f4754c9fb3e1b08d58943, type: 3}
   m_PrefabInstance: {fileID: 9174317726008559080}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1398013173 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 701081767310907061, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
-  m_PrefabInstance: {fileID: 1934853018}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1398013177 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8840837228504757848, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
@@ -3152,7 +3146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f3263a5e4283f1b479e91a949fba7d9a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 841755b383ade384aa8f31a85dd17264, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3396,11 +3390,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
---- !u!1 &1997552936 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 701081767310907061, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
-  m_PrefabInstance: {fileID: 619920925}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1997552940 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8840837228504757848, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
