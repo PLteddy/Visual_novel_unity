@@ -1063,6 +1063,7 @@ MonoBehaviour:
   DialogueDisplay: {fileID: 1268944033}
   ArtChar1a: {fileID: 1841352170}
   ArtBG1: {fileID: 620598244}
+  ArtBG2: {fileID: 620598244}
   Rond1: {fileID: 2025786105}
   Rond2: {fileID: 1183777391}
   Rond3: {fileID: 421931357}
