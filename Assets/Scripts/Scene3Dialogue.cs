@@ -204,12 +204,12 @@ else if (primeInt == 94){
     Char1speech.text = "Cela ne sert à rien d'essayer je suis trop faible...";
     primeInt = 95; 
 }
-else if (primeInt == 96){
+else if (primeInt == 95){
     Char1name.text = GameHandler.playerName; 
     Char1speech.text = "Je dois trouver une autre solution";
     primeInt++;
 }
-else if (primeInt == 97){
+else if (primeInt == 96){
     EndDialogue();
 }
 
@@ -267,7 +267,7 @@ else if (primeInt == 126){
 else if (primeInt == 144){
     Char1name.text = GameHandler.playerName; 
     Char1speech.text = "Je vais éviter de me créer plus de soucis.";
-    primeInt = 145; 
+    primeInt = 146; 
 }
 else if (primeInt == 146){
     EndDialogue();
