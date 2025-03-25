@@ -18,7 +18,6 @@ public class GameHandler : MonoBehaviour {
 
     // Variables globales de gestion du jeu
     public static int playerStat1; // Une statistique du joueur (peut-être un score ou une compétence ?)
-
     public static bool GameisPaused = false; // Indique si le jeu est en pause
     public GameObject pauseMenuUI; // Référence à l'UI du menu pause
     public AudioMixer mixer; // Gestion du volume sonore
@@ -28,9 +27,15 @@ public class GameHandler : MonoBehaviour {
     public static float timeRemaining = 3600f; // Temps restant avant la fin (1 heure)
     public static bool timerIsRunning = true; // Indique si le timer est en cours
     public TextMeshProUGUI timerText; // Texte affichant le temps restant
+
+    public static bool hasKey = false;
+    public static bool isElectricityOff = false; // Indique si le compteur électrique est éteint
+
     
 
     public static string playerName = "You"; // Valeur par défaut
+
+
 
     public static void SetPlayerName(string name)
     {
@@ -69,13 +74,13 @@ public class GameHandler : MonoBehaviour {
             if (timeRemaining <= 0){
                 timeRemaining = 0;
                 timerIsRunning = false;
-                SceneManager.LoadScene("SceneLose"); // Charge la scène de défaite si le temps expire
+                SceneManager.LoadScene("SceneLoose"); // Charge la scène de défaite si le temps expire
             }
         }
 
         // Si la vie du joueur tombe à 0, il perd la partie  je n'ai pas testé faudra donc voir si ça marche
         if (playerHealth <= 0){
-            SceneManager.LoadScene("SceneLose");
+            SceneManager.LoadScene("SceneLoose");
         }
 
         // Debugging possible (désactivé)
@@ -124,6 +129,8 @@ public class GameHandler : MonoBehaviour {
         timeRemaining = 3600f;
         timerIsRunning = true;
         GameHandler.playerName = ""; // Réinitialisation du nom
+        hasKey = false;
+        isElectricityOff = false;
     }
 
     // Affiche le temps restant sous format "MM:SS" à voir si on change ça plus tard 
@@ -143,3 +150,4 @@ public class GameHandler : MonoBehaviour {
         #endif
     }
 }
+

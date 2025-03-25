@@ -13,6 +13,7 @@ public class Scene3Dialogue : MonoBehaviour
     public GameObject DialogueDisplay;//C les bulles de dialogues !ne pas touchez!
     public GameObject ArtChar1a;//C la photo du perso principal !ne pas touchez!
     public GameObject ArtBG1;//C l'arrière plan !ne pas touchez!
+    public GameObject ArtBG2;//C l'arrière plan !ne pas touchez!
     public GameObject Rond1; //c le bouton qui permet de lancer un dialogue relié à rond1 il faut copier et coller pour en rajouter
     public GameObject Rond2;
     public GameObject Rond3;
@@ -103,13 +104,13 @@ public class Scene3Dialogue : MonoBehaviour
         else if (primeInt == 2)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je ne reconnais pas cet endroit...";
+            Char1speech.text = "J'entends les bruits de la rue...";
             primeInt++;
         }
         else if (primeInt == 3)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Peut-être que je devrais explorer un peu";
+            Char1speech.text = "Il faut vite que je m'échappe.";
             primeInt++;
         }
         else if (primeInt == 4)
@@ -120,7 +121,7 @@ public class Scene3Dialogue : MonoBehaviour
         {
            
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je suis déjà passé par ici...";
+            Char1speech.text = "De retour dans le garage...";
             primeInt = 100;
         }
         else if (primeInt == 100)
@@ -139,7 +140,7 @@ public class Scene3Dialogue : MonoBehaviour
     else if (primeInt == 41)
     {
         Char1name.text = GameHandler.playerName; 
-        Char1speech.text = "Je pourrais peut être fouiller et trouver quelque chose d'utilile";
+        Char1speech.text = "Je pourrais peut être fouiller et trouver quelque chose d'utile";
         primeInt++;
     }
     else if (primeInt == 42)
@@ -186,42 +187,32 @@ else if (primeInt == 83){  //C'est pour les choix faites attention ici où ça v
 // après le choix 1a
 else if (primeInt == 84){
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "choix1 porte";
-    primeInt = 85; 
-}
-else if (primeInt == 85){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je suis le choix après 1";
-    primeInt++;
-}
-else if (primeInt == 86){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "On parle et parlote";
-    primeInt++;
-}
-else if (primeInt == 87){
-    EndDialogue();
+
+    if (GameHandler.playerHealth == 10) { // Vérifie si la vie est au max
+        Char1speech.text = "La porte s’ouvre !";
+        SceneManager.LoadScene("SceneWin"); // Change de scène immédiatement
+    } else {
+        Char1speech.text = "Je n’ai pas assez d’énergie pour ouvrir cette porte...";
+        nextButton.SetActive(false); // Empêche de continuer
+        allowSpace = false; // Désactive l'avance avec espace
+    }
 }
 
 // après le choix 1b
 else if (primeInt == 94){
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "choix2 porte";
+    Char1speech.text = "Cela ne sert à rien d'essayer je suis trop faible...";
     primeInt = 95; 
-}
-else if (primeInt == 95){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je suis le choix après 2";
-    primeInt++;
 }
 else if (primeInt == 96){
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "on parle et parlotte toujours";
+    Char1speech.text = "Je dois trouver une autre solution";
     primeInt++;
 }
 else if (primeInt == 97){
     EndDialogue();
 }
+
 
 
 //Rond3_d
@@ -230,25 +221,25 @@ else if (primeInt == 97){
         {
             ArtChar1a.SetActive(true);
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "C'est la porte du garage";
+            Char1speech.text = "C'est un compteur électrique";
             primeInt++;
         }
         else if (primeInt == 121)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je pourrais peut être l'ouvrir et m'echapper";
+            Char1speech.text = "Il est ouvert et il y a des fils qui dépassent";
             primeInt++;
         }
         else if (primeInt == 122)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "avec un peu de force ";
+            Char1speech.text = "Je peux les déchirer pour faire un court-circuit mais ça risque d'être dangereux";
             primeInt++;
         }
 
 else if (primeInt == 123){
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je tente ou pas ?";
+    Char1speech.text = "Je déchire les fils ?";
     nextButton.SetActive(false);
     allowSpace = false;
     Choice2a.SetActive(true);
@@ -256,42 +247,29 @@ else if (primeInt == 123){
 }
 
 // après choix 2a
-else if (primeInt == 124){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "choix1 porte";
-    primeInt = 125; 
+else if (primeInt == 124) { 
+    Char1name.text = GameHandler.playerName;  
+    Char1speech.text = "Je déchire les fils... Tout devient sombre.";  
+    GameHandler.isElectricityOff = true; // Coupure d'électricité
+    ArtBG1.SetActive(false);
+    ArtBG2.SetActive(true);
 }
 else if (primeInt == 125){
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je suis le choix après 1";
+    Char1speech.text = "Je dois me dépêcher de sortir d'ici parce qu'on a dû me remarquer à cause de ça.";
     primeInt++;
 }
 else if (primeInt == 126){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "On parle et parlote";
-    primeInt++;
-}
-else if (primeInt == 127){
     EndDialogue();
 }
 
 // après choix 2b
 else if (primeInt == 144){
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "choix2 porte";
+    Char1speech.text = "Je vais éviter de me créer plus de soucis.";
     primeInt = 145; 
 }
-else if (primeInt == 145){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je suis le choix après 2";
-    primeInt++;
-}
 else if (primeInt == 146){
-    Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "on parle et parlotte toujours";
-    primeInt++;
-}
-else if (primeInt == 147){
     EndDialogue();
 }
 
@@ -318,44 +296,66 @@ else if (primeInt == 147){
             EndDialogue();
         }
 
-        //rond2
-        if (primeInt == 299)
-        {
-            Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je suis déjà passé par là.";
-            primeInt++;
-        }
-        else if (primeInt == 300)
-        {
-            Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je ne vais pas perdre mon temps ici.";
-            primeInt++;
-        }
-        else if (primeInt == 301)
-        {
-            EndDialogue();
-        }
+// Si le joueur retente d'ouvrir la porte (deuxième passage)
+else if (primeInt == 299){
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Je vais essayer encore une fois...";
+    primeInt = 300; 
+}
+
+// Vérification de la vie
+else if (primeInt == 300){
+    Char1name.text = GameHandler.playerName; 
+
+    if (GameHandler.playerHealth == 10) { // Vérifie si le joueur a la vie max
+        Char1speech.text = "Cette fois, ça marche !";
+        SceneManager.LoadScene("SceneWin"); // Change de scène
+    } else {
+        Char1speech.text = "Toujours pas assez d’énergie..."; 
+        primeInt = 301; 
+    }
+}
+
+// Suite si le joueur échoue
+else if (primeInt == 301){
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Je dois trouver une autre solution.";
+    primeInt++;
+}
+
+else if (primeInt == 302){
+    EndDialogue();
+}
 
 
-        //rond3
-                if (primeInt == 399)
-        {
-            Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je suis déjà passé par là.";
-            primeInt++;
-        }
-        else if (primeInt == 400)
-        {
-            Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je ne vais pas perdre mon temps ici.";
-            primeInt++;
-        }
-        else if (primeInt == 401)
-        {
-            EndDialogue();
-        }
+// Rond3
+if (primeInt == 399) {
+    if (GameHandler.isElectricityOff) {
+        // Si l'électricité est déjà coupée, on passe directement au message d'urgence
+        Char1name.text = GameHandler.playerName;  
+        Char1speech.text = "Je dois me dépêcher...";  
+    } else {
+        // Si l'électricité est encore allumée, on la coupe
+        Char1name.text = GameHandler.playerName;  
+        Char1speech.text = "Je déchire les fils... Tout devient sombre.";  
+        GameHandler.isElectricityOff = true; // Coupure d'électricité
 
- 
+        // Mettre à jour immédiatement le background
+        ArtBG1.SetActive(false);
+        ArtBG2.SetActive(true);
+    }
+    primeInt++;
+}
+else if (primeInt == 400) {
+    Char1name.text = GameHandler.playerName; 
+    Char1speech.text = "Bon, on peut y aller maintenant."; 
+    primeInt++;
+}
+else if (primeInt == 401) {
+    EndDialogue();
+}
+
+
 
     }// <-Faites attention à ne pas supprimer cette accolade 
 

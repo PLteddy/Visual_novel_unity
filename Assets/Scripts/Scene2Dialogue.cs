@@ -67,20 +67,20 @@ public class Scene2Dialogue : MonoBehaviour
         if (primeInt == 1)
         {
             ArtChar1a.SetActive(true);
-            Char1name.text = "Jeda";
-            Char1speech.text = "Tu es enfin arrivé dans le couloir...";
+            Char1name.text = GameHandler.playerName;
+            Char1speech.text = "Ce long couloir est angoissant...";
             primeInt++;
         }
         else if (primeInt == 2)
         {
-            Char1name.text = "YOU";
-            Char1speech.text = "Je ne reconnais pas cet endroit...";
+            Char1name.text = GameHandler.playerName;
+            Char1speech.text = "Je ne me sens pas à l'aise ici...";
             primeInt++;
         }
         else if (primeInt == 3)
         {
-            Char1name.text = "Jeda";
-            Char1speech.text = "C'est ici que tout commence.";
+            Char1name.text = GameHandler.playerName;
+            Char1speech.text = "Il faut vite que je pars mais par où passer ?";
             primeInt++;
         }
         else if (primeInt == 4)
@@ -90,7 +90,7 @@ public class Scene2Dialogue : MonoBehaviour
         else if (primeInt == 99)
         {
             // Cas du "je suis déjà passé"
-            Char1name.text = "YOU";
+            Char1name.text = GameHandler.playerName;
             Char1speech.text = "Je suis déjà passé par ici...";
             primeInt = 100;
         }
@@ -118,11 +118,11 @@ public class Scene2Dialogue : MonoBehaviour
 
     public void GoToScene2()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("SceneSalledebain");
     }
 
     public void GoToScene3()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("SceneHall");
     }
 }
