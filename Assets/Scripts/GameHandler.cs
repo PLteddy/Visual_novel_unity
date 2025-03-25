@@ -111,7 +111,7 @@ public class GameHandler : MonoBehaviour {
 
     // Charge la scène du jeu principal on changera le nom en fonction de c quelle scène
     public void StartGame(){
-        SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene("SceneGrenier");
     }
 
     // Charge la scène des crédits
