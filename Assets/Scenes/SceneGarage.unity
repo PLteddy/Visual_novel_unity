@@ -890,7 +890,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fe77a92e06b0f074f851be9bb443937e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 728fae82627e9ac4eaf147718fd7ee0b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f3263a5e4283f1b479e91a949fba7d9a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 841755b383ade384aa8f31a85dd17264, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2143,6 +2143,18 @@ PrefabInstance:
     - target: {fileID: 2039931313775055041, guid: c24273562c0691c4490cd7fedb86e65c, type: 3}
       propertyPath: m_Name
       value: DIALOGUE_DISPLAY
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211463624773071014, guid: c24273562c0691c4490cd7fedb86e65c, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211463624773071014, guid: c24273562c0691c4490cd7fedb86e65c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9151c867c7ab9c468a175da9ddbb689, type: 3}
+    - target: {fileID: 3211463624773071014, guid: c24273562c0691c4490cd7fedb86e65c, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
