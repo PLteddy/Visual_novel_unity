@@ -121,6 +121,9 @@ public class GameHandler : MonoBehaviour {
 
     // Redémarre le jeu et réinitialise les variables  ici il faut rajouter les variables que vous avez ajouté
     public void RestartGame(){
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save(); // Sauvegarde les changements
+
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
 

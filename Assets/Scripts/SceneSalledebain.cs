@@ -35,7 +35,6 @@ public class SceneSalledebain : MonoBehaviour //Vous changez le nom template en 
 
     //Variable pour vérifier que le joueur est déjà passé par là
     //a chaque fois que vous rajouter un dialogue + un bouton genre rond 5 vous devez mettre une variable pour vérifier
-    private bool firstTime; 
     private bool hasStartedDialogue = false;
     private bool hasStartedRond2 = false;
     private bool hasStartedRond3 = false;
@@ -45,8 +44,6 @@ public class SceneSalledebain : MonoBehaviour //Vous changez le nom template en 
 {
     //pour tester le premier passage à chaque fois :
     //!toucher seulement le nom de la variable ou me demander pour savoir si on retire le truc en bas! 
-    PlayerPrefs.DeleteKey("SceneSalledebainFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
-
     DialogueDisplay.SetActive(false);//cache la bulle de dialogue
     ArtChar1a.SetActive(false);//cache l'image du personnage 
     ArtBG1.SetActive(true); //affiche l'arrière plan
@@ -64,23 +61,24 @@ public class SceneSalledebain : MonoBehaviour //Vous changez le nom template en 
     Choice3b.SetActive(false);
     nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
 
-    //pas toucher à part pour changer le nom de la variable 
-    firstTime = PlayerPrefs.GetInt("SceneSalledebainFirstTime", 0) == 0;
+int visiteSDB = PlayerPrefs.GetInt("SceneSDBFirstTime", 1);
 
-    if (firstTime)// si c la première fois ça fait appraître un dialogue pour la découverte de la salle
+if (visiteSDB == 1) // Si c'est la première fois
     {
-        primeInt = 1;// Prime int est définit à 1
-        DialogueDisplay.SetActive(true); // la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
-        Next(); //Quand vous voyez ça veut dire que ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
-        PlayerPrefs.SetInt("SceneSalledebainFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
+        primeInt = 1;
+        DialogueDisplay.SetActive(true);
+        nextButton.SetActive(true);
+        Next();
+        
+        PlayerPrefs.SetInt("SceneSDBFirstTime", 2); // Marque la salle comme visitée
+        PlayerPrefs.Save();  
     }
-    else //sinon ça fait un autre dialogue en mode g déjà vu ça
+    else // Si le joueur est déjà passé
     {
-        DialogueDisplay.SetActive(true);// la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
-        primeInt = 99; // Prime int est définit à 99
-        Next();//ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
+        primeInt = 99;
+        DialogueDisplay.SetActive(true);
+        nextButton.SetActive(true);
+        Next();
     }
 }
 
@@ -253,9 +251,16 @@ else if (primeInt == 95){
             primeInt++;
         }
 
-else if (primeInt == 123){
+                else if (primeInt == 123)
+        {
+            Char1name.text = GameHandler.playerName;
+            Char1speech.text = "Toute façon on est dans la vraie vie ici, pas dans un film. Y aura forcément des cannettes, des restes de repas ou des médocs.";
+            primeInt++;
+        }
+
+else if (primeInt == 124){
     Char1name.text = GameHandler.playerName;
-    Char1speech.text = "Toute façon on est dans la vraie vie ici, pas dans un film. Y aura forcément des cannettes, des restes de repas ou des médicaments. Rien de plus.";
+    Char1speech.text = "Rien de plus...";
     nextButton.SetActive(false);
     allowSpace = false;
     Choice2a.SetActive(true);
@@ -263,13 +268,13 @@ else if (primeInt == 123){
 }
 
 // après choix 2a - changement de scène
-        else if (primeInt == 124) {  
+        else if (primeInt == 125) {  
             Char1name.text = GameHandler.playerName;
             Char1speech.text = "Je vais voir ce qu'il y a là dedans.";
-            primeInt = 125;
+            primeInt = 126;
         }
-        else if (primeInt == 125) {  
-            SceneManager.LoadScene("NomDeLaScene"); // Remplace par le nom de la scène suivante
+        else if (primeInt == 126) {  
+            SceneManager.LoadScene("SceneFrigo"); // Remplace par le nom de la scène suivante
         }
 
 // après choix 2b
@@ -383,7 +388,7 @@ else if (primeInt == 145){
             primeInt = 500;
         }
         else if (primeInt == 500) {  
-            SceneManager.LoadScene("NomDeLaScene"); // Remplace par le nom de la scène suivante
+            SceneManager.LoadScene("SceneFrigo"); // Remplace par le nom de la scène suivante
         }
 
         //rond6
@@ -530,7 +535,7 @@ public void Rond5_d() //pareil que rond1
 {
     if (!hasStartedRond5)// Si non visité
     {
-        hasStartedRond3 = true;
+        hasStartedRond5 = true;
         primeInt = 120;
 
        
@@ -564,7 +569,7 @@ public void Rond6_d() //pareil que rond1
 {
     if (!hasStartedRond6)// Si non visité
     {
-        hasStartedRond3 = true;
+        hasStartedRond6 = true;
         primeInt = 160;
 
        
@@ -578,7 +583,7 @@ public void Rond6_d() //pareil que rond1
         allowSpace = true;
         Next(); 
     }
-    else if (hasStartedRond6) // Si déjà visité
+    else // Si déjà visité
     {
         primeInt = 599; 
 
@@ -615,7 +620,7 @@ public void Choice1bFunct(){
 }
 
 public void Choice2aFunct(){
-    primeInt = 124;
+    primeInt = 125;
     Choice2a.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
     Choice2b.SetActive(false);
     nextButton.SetActive(true);
@@ -631,16 +636,16 @@ public void Choice2bFunct(){
 }
 public void Choice3aFunct(){
     primeInt = 162;
-    Choice2a.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
-    Choice2b.SetActive(false);
+    Choice3a.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
+    Choice3b.SetActive(false);
     nextButton.SetActive(true);
     allowSpace = true;
 }
 
 public void Choice3bFunct(){
     primeInt = 164;
-    Choice2a.SetActive(false);
-    Choice2b.SetActive(false);
+    Choice3a.SetActive(false);
+    Choice3b.SetActive(false);
     nextButton.SetActive(true);
     allowSpace = true;
 }
@@ -658,188 +663,3 @@ public void Choice3bFunct(){
 
 
 
-//TEMPLATE DE RAJOUT DE DIALOGUE DE BOUTON ETC COPIER COLLER AU BON ENDROIT ET MODIFIER SI BESOIN
-
-
-
-
-
-
-// Dans public class Scene3Dialogue : MonoBehaviour
-    //public GameObject Rond5; <- vous changez si vous voulez appeler ça autrement mais vous le changer partout
-    //public GameObject Choice3a;//Pareil là vous faites attention au nommage ils ne peut pas y avoir 2 choice avec le même nom
-   // public GameObject Choice3b;
-
-
-    //private bool hasStartedRond5 = false; le nom de la variable pour vérifier si on est déjà passé là où pas
-
-
-
-
-
-// Dans void Start()
-    //Rond5.SetActive(false);//cache le bouton
-   // Choice3a.SetActive(false);//cache les boutons de choix
-   // Choice3b.SetActive(false);
-
-
-
-
-
-
-
-   // Dans Next()
-
-   //rond5_d
-//        // if (primeInt == 210) LES PRIMEINT VOUS LES CHANGEZ MAIS VOUS FAITES ATTENTION A CE QUE VOUS METTEZ PAS DE DOUBLON ET VERIFIER QUE TOUT SE SUIT
-//         {
-//             ArtChar1a.SetActive(true);
-//             Char1name.text = GameHandler.playerName;
-//             Char1speech.text = "C'est la porte du garage"; //je vais pas vous apprendre à changer les dialogues
-//             primeInt++;
-//         }
-//         else if (primeInt == 211)
-//         {
-//             Char1name.text = GameHandler.playerName;
-//             Char1speech.text = "Je pourrais peut être l'ouvrir et m'echapper";
-//             primeInt++;
-//         }
-//         else if (primeInt == 212)
-//         {
-//             Char1name.text = GameHandler.playerName;
-//             Char1speech.text = "avec un peu de force ";
-//             primeInt++;
-//         }
-
-// else if (primeInt == 213){  
-//     Char1name.text = GameHandler.playerName;
-//     Char1speech.text = "Je tente ou pas ?";
-//     nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
-//     allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
-//     Choice3a.SetActive(true); ici faut que ce soit le même nom que vous avez défini avant vérifiez bien. 
-//     Choice3b.SetActive(true);
-// }
-
-// // après le choix 1a
-// else if (primeInt == 214){
-//     Char1name.text = GameHandler.playerName;
-//     Char1speech.text = "choix1 porte";
-//     primeInt = 215; //Il faut que tu expliques ici Yussera
-// }
-// else if (primeInt == 215){
-//     Char1name.text = GameHandler.playerName;
-//     Char1speech.text = "Je suis le choix après 1";
-//     primeInt++;
-// }
-// else if (primeInt == 216){
-//     Char1name.text = GameHandler.playerName;
-//     Char1speech.text = "On parle et parlote";
-//     primeInt++;
-// }
-// else if (primeInt == 217){
-//     EndDialogue();
-// }
-
-// // après le choix 1b
-// else if (primeInt == 224){
-//     Char1name.text = GameHandler.playerName;
-//     Char1speech.text = "choix2 porte";
-//     primeInt = 225; 
-// }
-// else if (primeInt == 225){
-//     Char1name.text = GameHandler.playerName;
-//     Char1speech.text = "Je suis le choix après 2";
-//     primeInt++;
-// }
-// else if (primeInt == 226){
-//     Char1name.text = GameHandler.playerName;
-//     Char1speech.text = "on parle et parlotte toujours";
-//     primeInt++;
-// }
-// else if (primeInt == 227){
-//     EndDialogue();
-// }
-
-
-
-
-        // //rond5
-        //         if (primeInt == 499)
-        // {
-        //     Char1name.text = GameHandler.playerName;
-        //     Char1speech.text = "Je suis déjà passé par là.";
-        //     primeInt++;
-        // }
-        // else if (primeInt == 500)
-        // {
-        //     Char1name.text = GameHandler.playerName;
-        //     Char1speech.text = "Je ne vais pas perdre mon temps ici.";
-        //     primeInt++;
-        // }
-        // else if (primeInt == 501)
-        // {
-        //     EndDialogue();
-        // }
-
-
-
-
-
-
-
-//EN BAS DES AUTRES PUBLIC VOID 
-
-// public void Rond5_d()//si vous avez changé le nom bah changez le ici
-// {
-//     if (!hasStartedRond5) // Le nom de la variable que vous avez mis
-//     {
-//         hasStartedRond5 = true;
-//         primeInt = 210; //Reliez ça au bon dialogue 
-
-        
-//         Rond1.SetActive(false);
-//         Rond2.SetActive(false);
-//         Rond3.SetActive(false);
-//          .SetActive(false);
-        // Rond5.SetActive(false);
-
-//         // Active le dialogue et les contrôles
-//         DialogueDisplay.SetActive(true);
-//         nextButton.SetActive(true);
-//         allowSpace = true;
-//         Next(); 
-//     }
-//     else if (hasStartedRond5) // Si déjà visité
-//     {
-//         primeInt = 499; 
-
-//         Rond1.SetActive(false);
-//         Rond2.SetActive(false);
-//         Rond3.SetActive(false);
-//          .SetActive(false);
-//         Rond5.SetActive(false);
-//         DialogueDisplay.SetActive(true);
-//         nextButton.SetActive(true);
-//         allowSpace = true;
-//         Next(); 
-//     }
-// }
-
-
-
-
-// public void Choice3aFunct(){
-//     primeInt = 214;  <- Vous vérifier que ça emmène au bon endroit
-//     Choice3a.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
-//     Choice3b.SetActive(false);
-//     nextButton.SetActive(true);
-//     allowSpace = true;
-// }
-
-// public void Choice3bFunct(){
-//     primeInt = 224;  <- Vous vérifier que ça emmène au bon endroit
-//     Choice3a.SetActive(false);
-//     Choice3b.SetActive(false);
-//     nextButton.SetActive(true);
-//     allowSpace = true;
-// }

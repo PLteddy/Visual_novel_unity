@@ -17,12 +17,9 @@ public class Scene2Dialogue : MonoBehaviour
     public GameObject nextButton;
     private bool allowSpace = true;
 
-    private bool firstTime; // nouvelle variable pour simplifier
 
     void Start()
 {
-    // TEMP pour tester le premier passage à chaque fois :
-    PlayerPrefs.DeleteKey("SceneCouloirFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
 
     DialogueDisplay.SetActive(false);
     ArtChar1a.SetActive(false);
@@ -31,22 +28,23 @@ public class Scene2Dialogue : MonoBehaviour
     Rond1.SetActive(false);
     Rond2.SetActive(false);
     Rond3.SetActive(false);
+int visiteCouloir = PlayerPrefs.GetInt("SceneCouloirFirstTime", 1);
 
-    firstTime = PlayerPrefs.GetInt("SceneCouloirFirstTime", 0) == 0;
-
-    if (firstTime)
+if (visiteCouloir == 1) // Si c'est la première fois
     {
         primeInt = 1;
         DialogueDisplay.SetActive(true);
         nextButton.SetActive(true);
         Next();
-        PlayerPrefs.SetInt("SceneCouloirFirstTime", 1);
+        
+        PlayerPrefs.SetInt("SceneCouloirFirstTime", 2); // Marque la salle comme visitée
+        PlayerPrefs.Save();  
     }
-    else
+    else // Si le joueur est déjà passé
     {
+        primeInt = 99;
         DialogueDisplay.SetActive(true);
         nextButton.SetActive(true);
-        primeInt = 99;
         Next();
     }
 }

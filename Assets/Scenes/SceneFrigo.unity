@@ -356,17 +356,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_etagere
       objectReference: {fileID: 0}
+    - target: {fileID: 6961789477890017696, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
+      propertyPath: m_text
+      value: Retour
+      objectReference: {fileID: 0}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 959566585}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Rond1_d
       objectReference: {fileID: 0}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Scene3Dialogue, Assembly-CSharp
+      value: SceneFrigo, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_Pivot.x
@@ -575,6 +579,10 @@ PrefabInstance:
     - target: {fileID: 8840837228504757848, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999484506449639600, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
+      propertyPath: m_text
+      value: Ne pas le prendre
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -828,17 +836,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_compteur
       objectReference: {fileID: 0}
+    - target: {fileID: 6961789477890017696, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
+      propertyPath: m_text
+      value: Voir
+      objectReference: {fileID: 0}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 959566585}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Rond2_d
       objectReference: {fileID: 0}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Scene3Dialogue, Assembly-CSharp
+      value: SceneFrigo, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_Pivot.x
@@ -1378,6 +1390,10 @@ PrefabInstance:
     - target: {fileID: 8840837228504757848, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999484506449639600, guid: 3a88a23dcbed8a147bf9e68a16b66057, type: 3}
+      propertyPath: m_text
+      value: Le prendre
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

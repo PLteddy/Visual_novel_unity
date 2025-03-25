@@ -32,7 +32,6 @@ public class Scene5Dialogue : MonoBehaviour //Vous changez le nom template en fo
 
     //Variable pour vérifier que le joueur est déjà passé par là
     //a chaque fois que vous rajouter un dialogue + un bouton genre rond 5 vous devez mettre une variable pour vérifier
-    private bool firstTime; 
     private bool hasStartedDialogue = false;
     private bool hasStartedRond2 = false;
     private bool hasStartedRond3 = false;
@@ -40,9 +39,6 @@ public class Scene5Dialogue : MonoBehaviour //Vous changez le nom template en fo
 
     void Start()
 {
-    //pour tester le premier passage à chaque fois :
-    //!toucher seulement le nom de la variable ou me demander pour savoir si on retire le truc en bas! 
-    PlayerPrefs.DeleteKey("SceneHallFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
 
     DialogueDisplay.SetActive(false);//cache la bulle de dialogue
     ArtChar1a.SetActive(false);//cache l'image du personnage 
@@ -58,23 +54,24 @@ public class Scene5Dialogue : MonoBehaviour //Vous changez le nom template en fo
     ChoiceCodeWrong.SetActive(false);   // Option pour entrer un mauvais code
     nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
 
-    //pas toucher à part pour changer le nom de la variable 
-    firstTime = PlayerPrefs.GetInt("SceneHallFirstTime", 0) == 0;
+int visiteHall = PlayerPrefs.GetInt("SceneHallFirstTime", 1);
 
-    if (firstTime)// si c la première fois ça fait appraître un dialogue pour la découverte de la salle
+if (visiteHall == 1) // Si c'est la première fois
     {
-        primeInt = 1;// Prime int est définit à 1
-        DialogueDisplay.SetActive(true); // la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
-        Next(); //Quand vous voyez ça veut dire que ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
-        PlayerPrefs.SetInt("SceneHallFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
+        primeInt = 1;
+        DialogueDisplay.SetActive(true);
+        nextButton.SetActive(true);
+        Next();
+        
+        PlayerPrefs.SetInt("SceneHallFirstTime", 2); // Marque la salle comme visitée
+        PlayerPrefs.Save();  
     }
-    else //sinon ça fait un autre dialogue en mode g déjà vu ça
+    else // Si le joueur est déjà passé
     {
-        DialogueDisplay.SetActive(true);// la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
-        primeInt = 99; // Prime int est définit à 99
-        Next();//ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
+        primeInt = 99;
+        DialogueDisplay.SetActive(true);
+        nextButton.SetActive(true);
+        Next();
     }
 }
 

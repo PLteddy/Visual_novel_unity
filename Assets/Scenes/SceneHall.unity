@@ -253,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6961789477890017696, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_text
-      value: plante
+      value: Plante
       objectReference: {fileID: 0}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -329,11 +329,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -24
+      value: 228
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 16
+      value: -117
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -467,11 +467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -190
+      value: -105
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 24
+      value: 86
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -751,7 +751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6961789477890017696, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_text
-      value: commode
+      value: Commode
       objectReference: {fileID: 0}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -827,11 +827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -580
+      value: 419
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 8
+      value: -68
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1293,7 +1293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6961789477890017696, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_text
-      value: manteau
+      value: Manteau
       objectReference: {fileID: 0}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1369,11 +1369,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 504
+      value: -577
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 10
+      value: -69
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1715,6 +1715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_couloir
       objectReference: {fileID: 0}
+    - target: {fileID: 6961789477890017696, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
+      propertyPath: m_text
+      value: Couloir
+      objectReference: {fileID: 0}
     - target: {fileID: 8774860865053814332, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1789,11 +1793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -14
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -292
+      value: -311
       objectReference: {fileID: 0}
     - target: {fileID: 8934981538137942138, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
