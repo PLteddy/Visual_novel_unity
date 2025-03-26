@@ -47,4 +47,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneIntro.unity
     guid: dbdf62826bee4a746aa61e4ba97556f0
+    path: Assets/Scenes/SceneScreamer.unity
+    guid: accbb4fa975c6474bbb09dc6e10ff2cf
+   1b8f31b5d4cc3b01507f47dac924460fe7204e9a
   m_configObjects: {}
+  
