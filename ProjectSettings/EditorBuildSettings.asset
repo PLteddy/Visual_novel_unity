@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneHall.unity
     guid: 6e6c92391e6fc934cb35a6f35c94acf1
+  - enabled: 1
+    path: Assets/Scenes/SceneScreamer.unity
+    guid: accbb4fa975c6474bbb09dc6e10ff2cf
   m_configObjects: {}

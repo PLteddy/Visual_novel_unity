@@ -3,19 +3,19 @@ using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class ScenePorte : MonoBehaviour //Vous changez le nom template en fonction du nom de votre scène
+public class SceneScreamer : MonoBehaviour //Vous changez le nom template en fonction du nom de votre scène
 {
     //ça c pour déclarer les variables que vous allez utilisez dans le script 
     //Donc c ici que vous gérez les ajouts d'objets interactif ou de choix 
     public int primeInt = 1;        
     public TMP_Text Char1name;//C le nom du perso principal !ne pas touchez!
+    public TMP_Text Char2name;
     public TMP_Text Char1speech;//C le texte du perso principal !ne pas touchez!
+    public TMP_Text Char2speech;
     public GameObject DialogueDisplay;//C les bulles de dialogues !ne pas touchez!
     public GameObject ArtChar1a;//C la photo du perso principal !ne pas touchez!
+    public GameObject ArtChar2a;
     public GameObject ArtBG1;//C l'arrière plan !ne pas touchez!
-    public GameObject Rond1; //c le bouton qui permet de lancer un dialogue relié à rond1 il faut copier et coller pour en rajouter
-    public GameObject Rond2;
-    public GameObject Rond3;
     public GameObject nextButton;
 
 
@@ -28,25 +28,21 @@ public class ScenePorte : MonoBehaviour //Vous changez le nom template en foncti
     //a chaque fois que vous rajouter un dialogue + un bouton genre rond 5 vous devez mettre une variable pour vérifier
     private bool firstTime; 
     private bool hasStartedDialogue = false;
-    private bool hasStartedRond2 = false;
-    private bool hasStartedRond3 = false;
 
     void Start()
 {
     //pour tester le premier passage à chaque fois :
     //!toucher seulement le nom de la variable ou me demander pour savoir si on retire le truc en bas! 
-    PlayerPrefs.DeleteKey("ScenePorteFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
+    PlayerPrefs.DeleteKey("SceneScreamerFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
 
     DialogueDisplay.SetActive(false);//cache la bulle de dialogue
     ArtChar1a.SetActive(false);//cache l'image du personnage 
+    ArtChar2a.SetActive(false);
     ArtBG1.SetActive(true); //affiche l'arrière plan
-    Rond1.SetActive(false); //cache les endroits cliquables
-    Rond2.SetActive(false);
-    Rond3.SetActive(false);
     nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
 
     //pas toucher à part pour changer le nom de la variable 
-    firstTime = PlayerPrefs.GetInt("ScenePorteFirstTime", 0) == 0;
+    firstTime = PlayerPrefs.GetInt("SceneScreamerFirstTime", 0) == 0;
 
     if (firstTime)// si c la première fois ça fait appraître un dialogue pour la découverte de la salle
     {
@@ -54,7 +50,7 @@ public class ScenePorte : MonoBehaviour //Vous changez le nom template en foncti
         DialogueDisplay.SetActive(true); // la bulle de dialogue apparaît
         nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
         Next(); //Quand vous voyez ça veut dire que ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
-        PlayerPrefs.SetInt("ScenePorteFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
+        PlayerPrefs.SetInt("SceneScreamerFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
     }
     else //sinon ça fait un autre dialogue en mode g déjà vu ça
     {
@@ -85,205 +81,79 @@ public class ScenePorte : MonoBehaviour //Vous changez le nom template en foncti
         //Dialogue d'introduction quand on rentre dans la salle pour la première fois
         if (primeInt == 1)
         {
-            EndDialogue();//emmène à la clôture du dialogue
+            ArtChar2a.SetActive(true);
+            ArtChar1a.SetActive(false);
+            Char1name.text = "";
+            Char1speech.text = "";
+            Char2name.text = "???";
+            Char2speech.text = "Coucou toi, tu as essayé de t’échapper, ça ne va pas se passer comme ça.";
+            primeInt++;
         }
-    
-//rond1_d
-    if (primeInt == 40)
-    {
-        ArtChar1a.SetActive(true);
-        Char1name.text = GameHandler.playerName;
-        Char1speech.text = "Oh il y a un petit trou, je peux regarder dedans…";
-        primeInt++;
-    }
-    else if (primeInt == 41)
-    {
-        Char1name.text = GameHandler.playerName;
-        Char1speech.text = "En approchant mon œil de l’orifice j’aperçois l’ombre de ce qui ressemble être un œil derrière la porte...";
-        primeInt++;
-    }
-    else if (primeInt == 42)
-    {
-        Char1name.text = GameHandler.playerName;
-        Char1speech.text = "Je ne devrais peut-être pas m’y risqué de regarder derrière la porte.";
-        primeInt++;
-    }
-    else if (primeInt == 43)
-    {
-        SceneManager.LoadScene("SceneSerrure");
-    }
-
-
-//rond2_d
-        if (primeInt == 80)
+        else if (primeInt == 2)
+        {
+            ArtChar2a.SetActive(true);
+            ArtChar1a.SetActive(false);
+            Char1name.text = "";
+            Char1speech.text = "";
+            Char2name.text = "???";
+            Char2speech.text = "HAHAHAHHAHAHAHAHAHAHAHAAH";
+            primeInt++;
+        }
+        else if (primeInt == 3)
         {
             ArtChar1a.SetActive(true);
+            ArtChar2a.SetActive(false);
+            Char2name.text = "";
+            Char2speech.text = "";
             Char1name.text = GameHandler.playerName;
-            Char1speech.text = "Prends ton courage à deux mains et ouvre cet foutu porte…";
+            Char1speech.text = "Paniquer j’essaye de fuir mais la chose me rattrape vite.";
             primeInt++;
         }
-        else if (primeInt == 81)
+        else if (primeInt == 4)
         {
+            ArtChar1a.SetActive(true);
+            ArtChar2a.SetActive(false);
+            Char2name.text = "";
+            Char2speech.text = "";
             Char1name.text = GameHandler.playerName;
-            Char1speech.text = "Délicatement j’ouvre la porte, raaaah elle grince...";
+            Char1speech.text = "Je ne peux plus rien faire à part attendre ma mort certaine.";
             primeInt++;
         }
-        else if (primeInt == 82)
+        else if (primeInt == 5)
         {
-            Char1name.text = GameHandler.playerName;
-            Char1speech.text = "J’espère que ça ne va pas faire venir mon ravisseur…";
-            primeInt++;
+            SceneManager.LoadScene("SceneLoose");
         }
-        else if (primeInt == 83)
-        {
-            SceneManager.LoadScene("SceneScreamer");
-        }
+    
 
-
-//Rond3_d
-
-        if (primeInt == 120)
-        {
-            SceneManager.LoadScene("SceneSalleDeBain");
-        }
+        
+    } // <-Faites attention à ne pas supprimer cette accolade
 
 
 
 
-// Dialogue lorsqu'on on rappuie sur les boutons 
-
-//rond1
-        if (primeInt == 199)
-        {
-            Char1name.text = GameHandler.playerName;
-            Char1speech.text = "Je suis déjà passé par là.";
-            primeInt++;
-        }
-        else if (primeInt == 200)
-        {
-            Char1name.text = GameHandler.playerName;
-            Char1speech.text = "Je ne vais pas perdre mon temps ici.";
-            primeInt++;
-        }
-        else if (primeInt == 201)
-        {
-            EndDialogue();
-        }
-
-//rond3
-
-        if (primeInt == 399)
-        {
-            SceneManager.LoadScene("SceneGarage");
-        }
-
-    }
     void EndDialogue() //Permet de fermer le dialogue vous ne touchez pas à part pour rajouter des ronds.
     {
         DialogueDisplay.SetActive(false);
         nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
-        Rond1.SetActive(true);
-        Rond2.SetActive(true);
-        Rond3.SetActive(true);
+        ArtChar2a.SetActive(false);
     }
 
 
 
 
-public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1 
-{
-    if (!hasStartedDialogue) //Si c'est la première fois qu'on fait ce dialogue 
-    {
-        hasStartedDialogue = true; //on active le passage 
-        primeInt = 40; //on va vers le dialogue 40
 
-        // Désactiver les boutons ronds pour éviter qu'ils restent affichés rajoutez en si vous en avez rajoutez
-        Rond1.SetActive(false);
-        Rond2.SetActive(false);
-        Rond3.SetActive(false);
-        DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
-        allowSpace = true;
-        Next(); 
-    }
-    else if (hasStartedDialogue) // Si déjà visité alors on va vers le dialogue 199
-    {
-        primeInt = 199; 
-         // Désactiver les boutons ronds pour éviter qu'ils restent affichés rajoutez en si vous en avez rajoutez
-        Rond1.SetActive(false);
-        Rond2.SetActive(false);
-        Rond3.SetActive(false);
-        DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
-        allowSpace = true;
-        Next(); 
-    }
+
+
+
 }
-
-
-
-public void Rond2_d()//pareil que rond1 
-{
-    if (!hasStartedRond2) // Si non visité
-    {
-        hasStartedRond2 = true;
-        primeInt = 80;
-
-        
-        Rond1.SetActive(false);
-        Rond2.SetActive(false);
-        Rond3.SetActive(false);
-
-        // Active le dialogue et les contrôles
-        DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
-        allowSpace = true;
-        Next(); 
-    }
-}
-
-
-
-public void Rond3_d() //pareil que rond1
-{
-    if (!hasStartedRond3)// Si non visité
-    {
-        hasStartedRond3 = true;
-        primeInt = 120;
-
-       
-        Rond1.SetActive(false);
-        Rond2.SetActive(false);
-        Rond3.SetActive(false);
-       
-        DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
-        allowSpace = true;
-        Next(); 
-    }
-    else if (hasStartedRond3) // Si déjà visité
-    {
-        primeInt = 399; 
-
-        Rond1.SetActive(false);
-        Rond2.SetActive(false);
-        Rond3.SetActive(false);
-        DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
-        allowSpace = true;
-        Next(); 
-    }
-}
-
 
 
 
 // FUNCTIONS FOR BUTTONS TO ACCESS (Choice #1 and SceneChanges)
 //ça c pour que ça sache sur quel bouton on a cliqué et donc sur quel dialogue on va déboucher
 
-}
     
 
 
