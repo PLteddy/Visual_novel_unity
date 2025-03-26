@@ -13,7 +13,6 @@ public class Scene3Dialogue : MonoBehaviour
     public GameObject DialogueDisplay;//C les bulles de dialogues !ne pas touchez!
     public GameObject ArtChar1a;//C la photo du perso principal !ne pas touchez!
     public GameObject ArtBG1;//C l'arrière plan !ne pas touchez!
-    public GameObject ArtBG2;//C l'arrière plan !ne pas touchez!
     public GameObject Rond1; //c le bouton qui permet de lancer un dialogue relié à rond1 il faut copier et coller pour en rajouter
     public GameObject Rond2;
     public GameObject Rond3;
@@ -192,8 +191,7 @@ else if (primeInt == 84){
         SceneManager.LoadScene("SceneWin"); // Change de scène immédiatement
     } else {
         Char1speech.text = "Je n’ai pas assez d’énergie pour ouvrir cette porte...";
-        nextButton.SetActive(false); // Empêche de continuer
-        allowSpace = false; // Désactive l'avance avec espace
+        primeInt=95;
     }
 }
 
@@ -250,8 +248,8 @@ else if (primeInt == 124) {
     Char1name.text = GameHandler.playerName;  
     Char1speech.text = "Je déchire les fils... Tout devient sombre.";  
     GameHandler.isElectricityOff = true; // Coupure d'électricité
-    ArtBG1.SetActive(false);
-    ArtBG2.SetActive(true);
+
+    primeInt++;
 }
 else if (primeInt == 125){
     Char1name.text = GameHandler.playerName; 
@@ -339,9 +337,6 @@ if (primeInt == 399) {
         Char1speech.text = "Je déchire les fils... Tout devient sombre.";  
         GameHandler.isElectricityOff = true; // Coupure d'électricité
 
-        // Mettre à jour immédiatement le background
-        ArtBG1.SetActive(false);
-        ArtBG2.SetActive(true);
     }
     primeInt++;
 }

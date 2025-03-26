@@ -14,6 +14,10 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     public GameObject DialogueDisplay;//C les bulles de dialogues !ne pas touchez!
     public GameObject ArtChar1a;//C la photo du perso principal !ne pas touchez!
     public GameObject ArtBG1;//C l'arrière plan !ne pas touchez!
+    public GameObject ArtBG2;
+    public GameObject ArtBG3;
+    public GameObject ArtBG4;
+    public GameObject ArtBG5;
     public GameObject Rond1; //c le bouton qui permet de lancer un dialogue relié à rond1 il faut copier et coller pour en rajouter
     public GameObject Rond2;
     public GameObject Rond3;
@@ -54,12 +58,14 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     void Start()
 {
     //pour tester le premier passage à chaque fois :
-    //!toucher seulement le nom de la variable ou me demander pour savoir si on retire le truc en bas! 
-    PlayerPrefs.DeleteKey("SceneGrenierFirstTime"); //retirer DeleteKey() pour garder le système de "je suis déjà passé par ici".
-
+    
     DialogueDisplay.SetActive(false);//cache la bulle de dialogue
     ArtChar1a.SetActive(false);//cache l'image du personnage 
-    ArtBG1.SetActive(true); //affiche l'arrière plan
+    ArtBG1.SetActive(true);
+    ArtBG2.SetActive(false);
+    ArtBG3.SetActive(false);
+    ArtBG4.SetActive(false);
+    ArtBG5.SetActive(false);
     Rond1.SetActive(false); //cache les endroits cliquables
     Rond2.SetActive(false);
     Rond3.SetActive(false);
@@ -249,6 +255,7 @@ else if (primeInt == 21)
 {
     Char1name.text = GameHandler.playerName; 
     Char1speech.text = "Outch... ça fais mal à la tête (- 1 de vie), je n'avais pas pensé au fait que je n'aurais pas mes mains pour me réceptionner";
+    GameHandler.playerHealth -= 1;//perte de vie 
     primeInt++;
 }
 else if (primeInt == 22)
@@ -259,6 +266,8 @@ else if (primeInt == 22)
 }
 else if (primeInt == 23)
 {
+    ArtBG2.SetActive(false);
+    ArtBG2.SetActive(true);
     Char1name.text = GameHandler.playerName; 
     Char1speech.text = "En tombant la pauvre chaise en bois c'est cassé, ça a créer assez d'espace pour que je m'extirpe de là.";
     primeInt=30;
@@ -292,12 +301,15 @@ else if (primeInt == 28){
 }
 else if (primeInt == 24)
 {
+    ArtBG1.SetActive(false);
+    ArtBG2.SetActive(true);
     Char1name.text = GameHandler.playerName; 
     Char1speech.text = "Maintenant je peux accéder aux restes de la pièce, il faut que je l'inspecte pour trouver une sortie.";
     primeInt = 30;
 }
 else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
 {
+
     EndDialogue();//emmène à la clôture du dialogue
 }
 
@@ -305,11 +317,12 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
 
 //rond1Porte
     if (primeInt == 40)
-    {
+    {        
+
         ArtChar1a.SetActive(true);
         Char1name.text = GameHandler.playerName; 
         Char1speech.text = "Est ce que je pourrais simplement passé par la porte ?";
-        //changement de scène à voir plus tard
+
         primeInt++;
     }
     else if (primeInt == 41)
@@ -396,6 +409,8 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         }
         else if (primeInt == 61)
         {
+            ArtBG2.SetActive(false);
+            ArtBG3.SetActive(true);
             Char1name.text = GameHandler.playerName; 
             Char1speech.text = "En poussant sur mon levier improvisé de fortune de toute mes forces, l'armoire tombe à la renverse sur le côté,";
             primeInt++;
@@ -503,6 +518,8 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
             primeInt++;
         }
         else if (primeInt == 78){
+            ArtBG2.SetActive(false);
+            ArtBG4.SetActive(true);
             Char1name.text = GameHandler.playerName; 
             Char1speech.text = "En l'enlevant délicatement, je peux maintenant ouvrir la fenêtre !";
             primeInt = 84;
@@ -527,9 +544,14 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 82){
             Char1name.text = GameHandler.playerName; 
             Char1speech.text = "J'aurais dû le voir venir, un bout de verre c'est planté dans mon bras… (-2 de vie)";
+
+            GameHandler.playerHealth -= 2;//perte de vie 
+
             primeInt++;
         }
         else if (primeInt == 83){
+            ArtBG2.SetActive(false);
+            ArtBG4.SetActive(true);
             Char1name.text = GameHandler.playerName; 
             Char1speech.text = "Aïe Aïe Aïe, ça fait un mal de chien mais au moins je peux passer par la fenêtre mais voyons d'abord ce qu'il y a en dessous.";
             primeInt++;
@@ -588,9 +610,9 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 95){
             Char1name.text = GameHandler.playerName; 
             Char1speech.text = "Je sens que ma vision se brouille, je me sens partir, j'ai froid, est ce que c'est la fin ?";
-            primeInt++;
+            primeInt=588;
         }
-        else if (primeInt == 95){
+        else if (primeInt == 588){
             SceneManager.LoadScene("SceneLoose");
         }
 
@@ -655,6 +677,8 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         }
         else if (primeInt == 107)
         {
+            ArtBG2.SetActive(false);
+            ArtBG5.SetActive(true);
             Char1name.text = GameHandler.playerName; 
             Char1speech.text = "Bingo une trappe ! Mais elle est bloqué et il y a pas l'air d'avoir de clé, est ce qu'il y aurait quelque chose qui pourrait m'aider ?";
             primeInt++;
@@ -682,6 +706,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         }
         else if(primeInt == 110){
             Char1speech.text = "En imbriquant le pied de biche dans la fente de la trappe, je pousse de toute mes forces pour faire un effet de levier.";
+            primeInt++;
         }
           
         
@@ -703,7 +728,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
             Char1speech.text = "Une échelle descend vers le bas et je la descend prudemment.";
             primeInt++;
         }
-        else if (primeInt == 113)
+        else if (primeInt == 114)
         {
             SceneManager.LoadScene("SceneSalledebain");
         }
@@ -894,7 +919,7 @@ public void Choice2aOuvrirArmoireFunct(){
     allowSpace = true;
 }
 public void Choice3aPiedBicheFunct(){
-    primeInt = 56;
+    primeInt = 58;
     Choice3aPiedBiche.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
     Choice3bAutreSolution.SetActive(false);
     nextButton.SetActive(true);

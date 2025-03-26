@@ -13,6 +13,6 @@ public class IntroVideoHandler : MonoBehaviour
 
     void OnVideoEnd(VideoPlayer vp)
     {
-        SceneManager.LoadScene("SceneSalledebain");
+        SceneManager.LoadScene("SceneGrenier");
     }
 }
