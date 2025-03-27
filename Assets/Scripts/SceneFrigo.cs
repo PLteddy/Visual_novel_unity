@@ -17,7 +17,6 @@ public class SceneFrigo : MonoBehaviour //Vous changez le nom template en foncti
     public GameObject Rond2;
     public GameObject Choice1a;//c les boutons qui permettent de choisir les choix il faut copier et coller pour en rajouter
     public GameObject Choice1b;
-    public GameObject nextButton;
 
 
     private bool allowSpace = true;// !ne pas touchez!
@@ -43,7 +42,6 @@ public class SceneFrigo : MonoBehaviour //Vous changez le nom template en foncti
     Rond2.SetActive(false);
     Choice1a.SetActive(false);//cache les boutons de choix
     Choice1b.SetActive(false);
-    nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
 
 int visiteFrigo = PlayerPrefs.GetInt("SceneFrigoFirstTime", 1);
 
@@ -51,7 +49,6 @@ if (visiteFrigo == 1) // Si c'est la première fois
     {
         primeInt = 1;
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         Next();
         
         PlayerPrefs.SetInt("SceneFrigoFirstTime", 2); // Marque la salle comme visitée
@@ -61,7 +58,6 @@ if (visiteFrigo == 1) // Si c'est la première fois
     {
         primeInt = 99;
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         Next();
     }
 }
@@ -163,7 +159,6 @@ if (visiteFrigo == 1) // Si c'est la première fois
 else if (primeInt == 83){  //C'est pour les choix faites attention ici où ça va pas marcher
     Char1name.text = GameHandler.playerName;
     Char1speech.text = "Je le prends ?";
-    nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
     allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
     Choice1a.SetActive(true);//active les choix possibles
     Choice1b.SetActive(true);//active les choix possibles
@@ -254,7 +249,6 @@ else if (primeInt == 95){
     void EndDialogue() //Permet de fermer le dialogue vous ne touchez pas à part pour rajouter des ronds.
     {
         DialogueDisplay.SetActive(false);
-        nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
         Rond1.SetActive(true);
@@ -275,7 +269,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond1.SetActive(false);
         Rond2.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -286,7 +279,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond1.SetActive(false);
         Rond2.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -307,7 +299,6 @@ public void Rond2_d()//pareil que rond1
 
         // Active le dialogue et les contrôles
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -318,7 +309,6 @@ public void Rond2_d()//pareil que rond1
         Rond1.SetActive(false);
         Rond2.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -336,7 +326,6 @@ public void Choice1aFunct(){
     primeInt = 84;
     Choice1a.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
     Choice1b.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -344,7 +333,6 @@ public void Choice1bFunct(){
     primeInt = 94;
     Choice1a.SetActive(false);
     Choice1b.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 

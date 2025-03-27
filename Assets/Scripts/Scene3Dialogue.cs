@@ -21,7 +21,6 @@ public class Scene3Dialogue : MonoBehaviour
     public GameObject Choice1b;
     public GameObject Choice2a;
     public GameObject Choice2b;
-    public GameObject nextButton;
 
 
     private bool allowSpace = true;// !ne pas touchez!
@@ -51,7 +50,7 @@ public class Scene3Dialogue : MonoBehaviour
     Choice1b.SetActive(false);
     Choice2a.SetActive(false);
     Choice2b.SetActive(false);
-    nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
+
 
 int visiteGarage = PlayerPrefs.GetInt("SceneGarageFirstTime", 1);
 
@@ -59,7 +58,6 @@ if (visiteGarage == 1) // Si c'est la première fois
     {
         primeInt = 1;
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         Next();
         
         PlayerPrefs.SetInt("SceneGarageFirstTime", 2); // Marque la salle comme visitée
@@ -69,7 +67,6 @@ if (visiteGarage == 1) // Si c'est la première fois
     {
         primeInt = 99;
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         Next();
     }
 }
@@ -176,7 +173,6 @@ if (visiteGarage == 1) // Si c'est la première fois
 else if (primeInt == 83){  //C'est pour les choix faites attention ici où ça va pas marcher
     Char1name.text = GameHandler.playerName; 
     Char1speech.text = "Je tente ou pas ?";
-    nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
     allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
     Choice1a.SetActive(true);//active les choix possibles
     Choice1b.SetActive(true);//active les choix possibles
@@ -237,7 +233,6 @@ else if (primeInt == 96){
 else if (primeInt == 123){
     Char1name.text = GameHandler.playerName; 
     Char1speech.text = "Je déchire les fils ?";
-    nextButton.SetActive(false);
     allowSpace = false;
     Choice2a.SetActive(true);
     Choice2b.SetActive(true);
@@ -358,7 +353,6 @@ else if (primeInt == 401) {
     void EndDialogue() //Permet de fermer le dialogue vous ne touchez pas à part pour rajouter des ronds.
     {
         DialogueDisplay.SetActive(false);
-        nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
         Rond1.SetActive(true);
@@ -383,7 +377,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -396,7 +389,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -419,7 +411,6 @@ public void Rond2_d()//pareil que rond1
 
         // Active le dialogue et les contrôles
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -432,7 +423,6 @@ public void Rond2_d()//pareil que rond1
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -455,7 +445,6 @@ public void Rond3_d() //pareil que rond1
 
        
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -468,7 +457,6 @@ public void Rond3_d() //pareil que rond1
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -483,7 +471,6 @@ public void Choice1aFunct(){
     primeInt = 84;
     Choice1a.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
     Choice1b.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -491,7 +478,6 @@ public void Choice1bFunct(){
     primeInt = 94;
     Choice1a.SetActive(false);
     Choice1b.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -499,7 +485,6 @@ public void Choice2aFunct(){
     primeInt = 124;
     Choice2a.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
     Choice2b.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -507,7 +492,6 @@ public void Choice2bFunct(){
     primeInt = 144;
     Choice2a.SetActive(false);
     Choice2b.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 //ATTENTION POUR LES RAJOUTS DES CHOIX IL FAUT BIEN FAIRE EN SORTE QUE VOUS AVEZ RAJOUTE DES BOUTONS EN HAUT DU FICHIER 

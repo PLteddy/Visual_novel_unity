@@ -14,7 +14,6 @@ public class Scene2Dialogue : MonoBehaviour
     public GameObject Rond1;
     public GameObject Rond2;
     public GameObject Rond3;
-    public GameObject nextButton;
     private bool allowSpace = true;
 
 
@@ -24,7 +23,6 @@ public class Scene2Dialogue : MonoBehaviour
     DialogueDisplay.SetActive(false);
     ArtChar1a.SetActive(false);
     ArtBG1.SetActive(true);
-    nextButton.SetActive(false);
     Rond1.SetActive(false);
     Rond2.SetActive(false);
     Rond3.SetActive(false);
@@ -34,7 +32,6 @@ if (visiteCouloir == 1) // Si c'est la première fois
     {
         primeInt = 1;
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         Next();
         
         PlayerPrefs.SetInt("SceneCouloirFirstTime", 2); // Marque la salle comme visitée
@@ -44,7 +41,6 @@ if (visiteCouloir == 1) // Si c'est la première fois
     {
         primeInt = 99;
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         Next();
     }
 }
@@ -101,7 +97,6 @@ if (visiteCouloir == 1) // Si c'est la première fois
     void EndDialogue()
     {
         DialogueDisplay.SetActive(false);
-        nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
         Rond1.SetActive(true);
