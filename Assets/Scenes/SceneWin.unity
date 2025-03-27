@@ -778,7 +778,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2048736884986256433, guid: 2f5c591228f88514a9052cf3aa7df9cc, type: 3}
       propertyPath: m_text
-      value: Quit
+      value: Quitter
       objectReference: {fileID: 0}
     - target: {fileID: 3044251478250393594, guid: 2f5c591228f88514a9052cf3aa7df9cc, type: 3}
       propertyPath: m_Name
@@ -1083,7 +1083,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2048736884986256433, guid: 2f5c591228f88514a9052cf3aa7df9cc, type: 3}
       propertyPath: m_text
-      value: Main Menu
+      value: Menu
       objectReference: {fileID: 0}
     - target: {fileID: 3044251478250393594, guid: 2f5c591228f88514a9052cf3aa7df9cc, type: 3}
       propertyPath: m_Name

@@ -14,7 +14,6 @@ public class SceneSerrure : MonoBehaviour //Vous changez le nom template en fonc
     public GameObject ArtChar1a;//C la photo du perso principal !ne pas touchez!
     public GameObject ArtBG1;//C l'arrière plan !ne pas touchez!
     public GameObject Rond1; //c le bouton qui permet de lancer un dialogue relié à rond1 il faut copier et coller pour en rajouter
-    public GameObject nextButton;
 
 
     private bool allowSpace = true;// !ne pas touchez!
@@ -37,7 +36,7 @@ public class SceneSerrure : MonoBehaviour //Vous changez le nom template en fonc
     ArtChar1a.SetActive(false);//cache l'image du personnage 
     ArtBG1.SetActive(true); //affiche l'arrière plan
     Rond1.SetActive(false); //cache les endroits cliquables
-    nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
+
 
     //pas toucher à part pour changer le nom de la variable 
     firstTime = PlayerPrefs.GetInt("SceneSerrureFirstTime", 0) == 0;
@@ -46,14 +45,12 @@ public class SceneSerrure : MonoBehaviour //Vous changez le nom template en fonc
     {
         primeInt = 1;// Prime int est définit à 1
         DialogueDisplay.SetActive(true); // la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
         Next(); //Quand vous voyez ça veut dire que ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
         PlayerPrefs.SetInt("SceneSerrureFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
     }
     else //sinon ça fait un autre dialogue en mode g déjà vu ça
     {
         DialogueDisplay.SetActive(true);// la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
         primeInt = 99; // Prime int est définit à 99
         Next();//ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
     }
@@ -117,7 +114,6 @@ public class SceneSerrure : MonoBehaviour //Vous changez le nom template en fonc
     void EndDialogue() //Permet de fermer le dialogue vous ne touchez pas à part pour rajouter des ronds.
     {
         DialogueDisplay.SetActive(false);
-        nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
         Rond1.SetActive(true);
@@ -136,7 +132,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         // Désactiver les boutons ronds pour éviter qu'ils restent affichés rajoutez en si vous en avez rajoutez
         Rond1.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -146,7 +141,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
          // Désactiver les boutons ronds pour éviter qu'ils restent affichés rajoutez en si vous en avez rajoutez
         Rond1.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }

@@ -16,7 +16,6 @@ public class ScenePorte : MonoBehaviour //Vous changez le nom template en foncti
     public GameObject Rond1; //c le bouton qui permet de lancer un dialogue relié à rond1 il faut copier et coller pour en rajouter
     public GameObject Rond2;
     public GameObject Rond3;
-    public GameObject nextButton;
 
 
     private bool allowSpace = true;// !ne pas touchez!
@@ -43,7 +42,6 @@ public class ScenePorte : MonoBehaviour //Vous changez le nom template en foncti
     Rond1.SetActive(false); //cache les endroits cliquables
     Rond2.SetActive(false);
     Rond3.SetActive(false);
-    nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
 
     //pas toucher à part pour changer le nom de la variable 
     firstTime = PlayerPrefs.GetInt("ScenePorteFirstTime", 0) == 0;
@@ -52,14 +50,12 @@ public class ScenePorte : MonoBehaviour //Vous changez le nom template en foncti
     {
         primeInt = 1;// Prime int est définit à 1
         DialogueDisplay.SetActive(true); // la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
         Next(); //Quand vous voyez ça veut dire que ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
         PlayerPrefs.SetInt("ScenePorteFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
     }
     else //sinon ça fait un autre dialogue en mode g déjà vu ça
     {
         DialogueDisplay.SetActive(true);// la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
         primeInt = 99; // Prime int est définit à 99
         Next();//ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
     }
@@ -181,7 +177,6 @@ public class ScenePorte : MonoBehaviour //Vous changez le nom template en foncti
     void EndDialogue() //Permet de fermer le dialogue vous ne touchez pas à part pour rajouter des ronds.
     {
         DialogueDisplay.SetActive(false);
-        nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
         Rond1.SetActive(true);
@@ -204,7 +199,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond2.SetActive(false);
         Rond3.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -216,7 +210,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond2.SetActive(false);
         Rond3.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -238,7 +231,6 @@ public void Rond2_d()//pareil que rond1
 
         // Active le dialogue et les contrôles
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -259,7 +251,6 @@ public void Rond3_d() //pareil que rond1
         Rond3.SetActive(false);
        
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -271,7 +262,6 @@ public void Rond3_d() //pareil que rond1
         Rond2.SetActive(false);
         Rond3.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }

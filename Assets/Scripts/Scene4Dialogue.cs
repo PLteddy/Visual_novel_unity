@@ -35,7 +35,6 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     public GameObject Choice7aTapis;
     public GameObject Choice8aTrappe;
     public GameObject Choice8bAutreSolution;
-    public GameObject nextButton;
     public TMP_InputField nameInputField; // Champ texte où le joueur entre son nom
     public GameObject namePrompt; // Le panel contenant l'input field et le bouton de validation
     public Button validateNameButton; // Bouton pour valider le nom
@@ -83,7 +82,7 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     Choice7aTapis.SetActive(false);
     Choice8aTrappe.SetActive(false);
     Choice8bAutreSolution.SetActive(false);
-    nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
+
     namePrompt.SetActive(false); // Cache la saisie de nom au départ
     validateNameButton.gameObject.SetActive(false); 
     nameInputField.gameObject.SetActive(false);
@@ -96,14 +95,14 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     {
         primeInt = 1;// Prime int est définit à 1
         DialogueDisplay.SetActive(true); // la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
+
         Next(); //Quand vous voyez ça veut dire que ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
         PlayerPrefs.SetInt("SceneGrenierFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
     }
     else //sinon ça fait un autre dialogue en mode g déjà vu ça
     {
         DialogueDisplay.SetActive(true);// la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
+
         primeInt = 899; // Prime int est définit à 99
         Next();//ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
     }
@@ -213,7 +212,6 @@ else if (primeInt == 12)
 else if (primeInt == 13){  //C'est pour les choix faites attention ici où ça va pas marcher
     Char1name.text = GameHandler.playerName; 
     Char1speech.text = "Je pourrais…";
-    nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
     allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
     Choice1aForce.SetActive(true);//active les choix possibles
     Choice1bIntelligence.SetActive(true);//active les choix possibles
@@ -340,7 +338,6 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
     else if (primeInt == 50){  //C'est pour les choix faites attention ici où ça va pas marcher
         Char1name.text = GameHandler.playerName; 
         Char1speech.text = "Cette armoire à l'air bancale, que devrais-je faire ?";
-        nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
         allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
         Choice2aOuvrirArmoire.SetActive(true);//active les choix possibles
         
@@ -378,7 +375,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
            
             Char1name.text = GameHandler.playerName; 
             Char1speech.text = "...";
-            nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
+
             allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
             Choice3aPiedBiche.SetActive(true);//active les choix possibles
             Choice3bAutreSolution.SetActive(true);
@@ -501,7 +498,6 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 74){
             Char1name.text = GameHandler.playerName; 
             Char1speech.text = "Est-ce que je pourrais…";
-            nextButton.SetActive(false);
             allowSpace = false;
             Choice4aArranger.SetActive(true);
             Choice4bPeter.SetActive(true);
@@ -581,7 +577,6 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 87){  //C'est pour les choix faites attention ici où ça va pas marcher
         Char1name.text = GameHandler.playerName; 
         Char1speech.text = "Que devrais-je faire ?";
-        nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
         allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
         Choice5aSauter.SetActive(true);//active les choix possibles
         Choice5bPasSauter.SetActive(true);
@@ -656,7 +651,6 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 103){  //C'est pour les choix faites attention ici où ça va pas marcher
         Char1name.text = GameHandler.playerName; 
         Char1speech.text = "Je me demande ce que je peux faire d'autre?";
-        nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
         allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
         Choice6aTable.SetActive(true);//active les choix possibles
         
@@ -670,7 +664,6 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 105){  //C'est pour les choix faites attention ici où ça va pas marcher
         Char1name.text = GameHandler.playerName; 
         Char1speech.text = "Je me demande ce que je peux faire d'autre?";
-        nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
         allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
         Choice7aTapis.SetActive(true);
         
@@ -694,7 +687,6 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
             {
                 Char1name.text = GameHandler.playerName; 
                 Char1speech.text = "Je me demande ce que je peux faire d'autre?";
-                nextButton.SetActive(false); // ça fait en sorte qu'on ne puisse pas passer le dialogue 
                 allowSpace = false; // N'autorise pas le passage au dialogue suivant avec la barre espace
                 Choice8aTrappe.SetActive(true); // active les choix possibles
                 primeInt = 110;
@@ -748,7 +740,6 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
     void EndDialogue() //Permet de fermer le dialogue vous ne touchez pas à part pour rajouter des ronds.
     {
         DialogueDisplay.SetActive(false);
-        nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
         Rond1.SetActive(true);
@@ -773,7 +764,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -786,7 +776,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -809,7 +798,6 @@ public void Rond2_d()//pareil que rond1
 
         // Active le dialogue et les contrôles
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -822,7 +810,6 @@ public void Rond2_d()//pareil que rond1
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -845,7 +832,6 @@ public void Rond3_d() //pareil que rond1
 
        
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -858,7 +844,6 @@ public void Rond3_d() //pareil que rond1
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -879,7 +864,6 @@ public void Rond4_d()
 
        
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -892,7 +876,6 @@ public void Rond4_d()
         Rond3.SetActive(false);
         Rond4.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -908,34 +891,29 @@ public void Choice1aForceFunct(){
     primeInt = 15;
     Choice1aForce.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
     Choice1bIntelligence.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice1bIntelligenceFunct(){
     primeInt = 25;
     Choice1aForce.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
     Choice1bIntelligence.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice2aOuvrirArmoireFunct(){
     primeInt = 51;
     Choice2aOuvrirArmoire.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice3aPiedBicheFunct(){
     primeInt = 58;
     Choice3aPiedBiche.SetActive(false); //pour désactiver la vue des choix après que ça a été fait 
     Choice3bAutreSolution.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice3bAutreSolutionFunct(){
     primeInt = 56;
     Choice3aPiedBiche.SetActive(false);
     Choice3bAutreSolution.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -943,7 +921,6 @@ public void Choice4aArrangerFunct(){
     primeInt = 75;
     Choice4aArranger.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
     Choice4bPeter.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -951,46 +928,39 @@ public void Choice4bPeterFunct(){
     primeInt = 79;
     Choice4aArranger.SetActive(false);
     Choice4bPeter.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice5aSauterFunct(){
     primeInt = 90;
     Choice5aSauter.SetActive(false);
     Choice5bPasSauter.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice5bPasSauterFunct(){
     primeInt = 96;
     Choice5aSauter.SetActive(false);
     Choice5bPasSauter.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice6aTableFunct(){
     primeInt = 104;
     Choice6aTable.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice7aTapisFunct(){
     primeInt = 106;
     Choice7aTapis.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice8aTrappeFunct(){
     primeInt = 110;
     Choice8aTrappe.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 public void Choice8bAutreSolutionFunct(){
     primeInt = 109;
     Choice8bAutreSolution.SetActive(false);
     Choice8aTrappe.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 //ATTENTION POUR LES RAJOUTS DES CHOIX IL FAUT BIEN FAIRE EN SORTE QUE VOUS AVEZ RAJOUTE DES BOUTONS EN HAUT DU FICHIER 

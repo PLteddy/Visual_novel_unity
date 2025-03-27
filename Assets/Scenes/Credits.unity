@@ -707,7 +707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Les gens qui ont fait ce projet c'est:\nM\xE9lina \nVictor\nYussera"
+  m_text: "Ce projet a \xE9t\xE9 r\xE9alis\xE9 par:\nM\xE9lina \nVictor\nYussera"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1223,7 +1223,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2048736884986256433, guid: 2f5c591228f88514a9052cf3aa7df9cc, type: 3}
       propertyPath: m_text
-      value: Main Menu
+      value: Menu
       objectReference: {fileID: 0}
     - target: {fileID: 3044251478250393594, guid: 2f5c591228f88514a9052cf3aa7df9cc, type: 3}
       propertyPath: m_Name

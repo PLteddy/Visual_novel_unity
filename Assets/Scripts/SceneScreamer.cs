@@ -16,7 +16,6 @@ public class SceneScreamer : MonoBehaviour //Vous changez le nom template en fon
     public GameObject ArtChar1a;//C la photo du perso principal !ne pas touchez!
     public GameObject ArtChar2a;
     public GameObject ArtBG1;//C l'arrière plan !ne pas touchez!
-    public GameObject nextButton;
 
 
     private bool allowSpace = true;// !ne pas touchez!
@@ -39,7 +38,6 @@ public class SceneScreamer : MonoBehaviour //Vous changez le nom template en fon
     ArtChar1a.SetActive(false);//cache l'image du personnage 
     ArtChar2a.SetActive(false);
     ArtBG1.SetActive(true); //affiche l'arrière plan
-    nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
 
     //pas toucher à part pour changer le nom de la variable 
     firstTime = PlayerPrefs.GetInt("SceneScreamerFirstTime", 0) == 0;
@@ -48,14 +46,12 @@ public class SceneScreamer : MonoBehaviour //Vous changez le nom template en fon
     {
         primeInt = 1;// Prime int est définit à 1
         DialogueDisplay.SetActive(true); // la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
         Next(); //Quand vous voyez ça veut dire que ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
         PlayerPrefs.SetInt("SceneScreamerFirstTime", 1);//Transforme le booléen en 1 au lieu de 0 pour dire qu'on est passé
     }
     else //sinon ça fait un autre dialogue en mode g déjà vu ça
     {
         DialogueDisplay.SetActive(true);// la bulle de dialogue apparaît
-        nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
         primeInt = 99; // Prime int est définit à 99
         Next();//ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
     }
@@ -134,7 +130,6 @@ public class SceneScreamer : MonoBehaviour //Vous changez le nom template en fon
     void EndDialogue() //Permet de fermer le dialogue vous ne touchez pas à part pour rajouter des ronds.
     {
         DialogueDisplay.SetActive(false);
-        nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
         ArtChar2a.SetActive(false);

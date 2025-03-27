@@ -22,7 +22,6 @@ public class Scene5Dialogue : MonoBehaviour //Vous changez le nom template en fo
     public GameObject Choice2b;
     public GameObject ChoiceCodeCorrect; // Option pour entrer le bon code
     public GameObject ChoiceCodeWrong;   // Option pour entrer un mauvais code
-    public GameObject nextButton;
 
 
     private bool allowSpace = true;// !ne pas touchez!
@@ -52,7 +51,6 @@ public class Scene5Dialogue : MonoBehaviour //Vous changez le nom template en fo
     Choice2b.SetActive(false);
     ChoiceCodeCorrect.SetActive(false); // Option pour entrer le bon code
     ChoiceCodeWrong.SetActive(false);   // Option pour entrer un mauvais code
-    nextButton.SetActive(true); //ça permet de faire next dans le dialogue d'introduction de la salle
 
 int visiteHall = PlayerPrefs.GetInt("SceneHallFirstTime", 1);
 
@@ -60,7 +58,6 @@ if (visiteHall == 1) // Si c'est la première fois
     {
         primeInt = 1;
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         Next();
         
         PlayerPrefs.SetInt("SceneHallFirstTime", 2); // Marque la salle comme visitée
@@ -70,7 +67,6 @@ if (visiteHall == 1) // Si c'est la première fois
     {
         primeInt = 99;
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         Next();
     }
 }
@@ -201,7 +197,6 @@ else if (primeInt == 123)
 {
     Char1name.text = GameHandler.playerName;
     Char1speech.text = "Je déplace la plante ?";
-    nextButton.SetActive(false);
     allowSpace = false;
     Choice2a.SetActive(true);
     Choice2b.SetActive(true);
@@ -297,7 +292,6 @@ else if (primeInt == 525) // Début de la saisie du code
     else 
     {
         Char1speech.text = "Je dois entrer le code.";
-        nextButton.SetActive(false);
         allowSpace = false;
         ChoiceCodeCorrect.SetActive(true); // Option pour entrer le bon code
         ChoiceCodeWrong.SetActive(true);   // Option pour entrer un mauvais code
@@ -417,7 +411,6 @@ else if (primeInt == 401) {
     void EndDialogue() //Permet de fermer le dialogue vous ne touchez pas à part pour rajouter des ronds.
     {
         DialogueDisplay.SetActive(false);
-        nextButton.SetActive(false);
         allowSpace = false;
         ArtChar1a.SetActive(false);
         Rond1.SetActive(true);
@@ -444,7 +437,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond4.SetActive(false);
         Rond5.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -458,7 +450,6 @@ public void Rond1_d() //Permet de gérer les dialogues et choix du bouton 1
         Rond4.SetActive(false);
         Rond5.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -482,7 +473,6 @@ public void Rond2_d()//pareil que rond1
 
         // Active le dialogue et les contrôles
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -496,7 +486,6 @@ public void Rond2_d()//pareil que rond1
         Rond4.SetActive(false);
         Rond5.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -520,7 +509,6 @@ public void Rond3_d() //pareil que rond1
 
        
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -534,7 +522,6 @@ public void Rond3_d() //pareil que rond1
         Rond4.SetActive(false);
         Rond5.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -556,7 +543,6 @@ public void Rond5_d() //pareil que rond1
 
        
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -570,7 +556,6 @@ public void Rond5_d() //pareil que rond1
         Rond4.SetActive(false);
         Rond5.SetActive(false);
         DialogueDisplay.SetActive(true);
-        nextButton.SetActive(true);
         allowSpace = true;
         Next(); 
     }
@@ -586,7 +571,6 @@ public void Choice2aFunct(){
     primeInt = 124;
     Choice2a.SetActive(false);// pareil pour désactiver la vue des choix après que ça a été fait
     Choice2b.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -594,7 +578,6 @@ public void Choice2bFunct(){
     primeInt = 144;
     Choice2a.SetActive(false);
     Choice2b.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -604,7 +587,6 @@ public void ChoiceCodeCorrectFunct()
     primeInt = 661; // Succès
     ChoiceCodeCorrect.SetActive(false);
     ChoiceCodeWrong.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
@@ -613,7 +595,6 @@ public void ChoiceCodeWrongFunct()
     primeInt = 670; // Échec
     ChoiceCodeCorrect.SetActive(false);
     ChoiceCodeWrong.SetActive(false);
-    nextButton.SetActive(true);
     allowSpace = true;
 }
 
