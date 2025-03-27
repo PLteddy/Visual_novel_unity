@@ -652,7 +652,6 @@ MonoBehaviour:
   Rond1: {fileID: 1881969547}
   Rond2: {fileID: 0}
   Rond3: {fileID: 0}
-  nextButton: {fileID: 0}
 --- !u!1 &1110313117
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1283,22 @@ PrefabInstance:
     - target: {fileID: 1895366338172181205, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_Name
       value: Rond1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320729850210146359, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 959566585}
+    - target: {fileID: 3320729850210146359, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToScene1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320729850210146359, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Scene2Dialogue, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3320729850210146359, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3375900508207575084, guid: 507df78f19dc8264a8813fc917efea36, type: 3}
       propertyPath: m_AnchoredPosition.x
