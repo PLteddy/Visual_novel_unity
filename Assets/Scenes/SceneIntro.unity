@@ -442,6 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1758149925}
+  mixer: {fileID: 24100000, guid: cd7f55be91d1ea14ba9e8ec078c75017, type: 2}
 --- !u!1 &1110313117
 GameObject:
   m_ObjectHideFlags: 0

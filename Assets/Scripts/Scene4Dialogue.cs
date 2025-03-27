@@ -104,7 +104,7 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     {
         DialogueDisplay.SetActive(true);// la bulle de dialogue apparaît
         nextButton.SetActive(true);//le bouton next apparaît et on peut passer les dialogues
-        primeInt = 99; // Prime int est définit à 99
+        primeInt = 899; // Prime int est définit à 99
         Next();//ça emmène dans Next donc vérifier le primeInt pour voir dans quel dialogue ça emmène
     }
 }
@@ -124,6 +124,12 @@ public class Scene4Dialogue : MonoBehaviour //Vous changez le nom template en fo
     
     { // <-Faites attention à ne pas supprimer cette accolade
 
+if (primeInt == 899)
+{
+    ArtBG1.SetActive(false);
+    ArtBG2.SetActive(true);
+    primeInt = 30;
+}
 
 
 if (primeInt == 1)
@@ -170,7 +176,7 @@ else if (primeInt == 6)
 else if (primeInt == 7)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je rentrais de l'école quand un homme m'a frappé à la tête part derrière avec une batte. Ça m'a direct mis KO.";
+    Char1speech.text = "Je rentrais de l'école quand un homme m'a frappé à la tête par derrière avec une batte. Ça m'a direct mis KO.";
     primeInt++;
 }
 else if (primeInt == 8)
@@ -188,19 +194,19 @@ else if (primeInt == 9)
 else if (primeInt == 10)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je comprend même pas pourquoi cet homme m'a kidnappé, ça me fait peur...";
+    Char1speech.text = "Je ne comprend même pas pourquoi cet homme m'a kidnappé, ça me fait peur...";
     primeInt++;
 }
 else if (primeInt == 11)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Allez ressaisis toi! ce n'est pas comme ça que je pourrais sortir de là surtout qu'il peut revenir!";
+    Char1speech.text = "Allez ressaisis-toi! ce n'est pas comme ça que je pourrais sortir de là surtout qu'il peut revenir!";
     primeInt++;
 }
 else if (primeInt == 12)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Il faut que je me tire de là mais comment me défaire de ces cordes? Je pourrais…";
+    Char1speech.text = "Il faut que je me tire de là mais comment me défaire de ces cordes?";
     primeInt++;
 }
 //Premier choix du joueur
@@ -224,31 +230,31 @@ else if (primeInt == 15){
 else if (primeInt == 16)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Je commence à m'essouffler à essayez de tirer cette corde avec mes mains, mes bras, mes pieds, mes dents...";
+    Char1speech.text = "Je commence à m'essouffler à essayer de tirer cette corde avec mes mains, mes bras, mes pieds, mes dents...";
     primeInt++;
 }
 else if (primeInt == 17)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "tout ce qui pourrait m'aider à créer suffisamment d'espace pour que je puisse m'échapper. Mais rien n'y fais… ";
+    Char1speech.text = "tout ce qui pourrait m'aider à créer suffisamment d'espace pour que je puisse m'échapper. Mais rien n'y fait… ";
     primeInt++;
 }
 else if (primeInt == 18)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Même ronger la corde avec mes dents ne change rien, il y a que dans les films que ça marche.";
+    Char1speech.text = "Même ronger la corde avec mes dents ne change rien, il n'y a que dans les films que ça marche.";
     primeInt++;
 }
 else if (primeInt == 19)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "En désespoir de cause, je me bascule de gauche à droite sur la chaise pour me faire tomber. Aller un peu de nerd !";
+    Char1speech.text = "En désespoir de cause, je me bascule de gauche à droite sur la chaise pour me faire tomber. Aller un peu de nerfs !";
     primeInt++;
 }
 else if (primeInt == 20)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Avec de l'acharnement, je prend de la vitesse, la chaise tombe avec moi.";
+    Char1speech.text = "Avec de l'acharnement, je prends de la vitesse, la chaise tombe avec moi.";
     primeInt++;
 }
 else if (primeInt == 21)
@@ -261,7 +267,7 @@ else if (primeInt == 21)
 else if (primeInt == 22)
 {
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "mais la technique à quand même été efficace ! ";
+    Char1speech.text = "mais la technique a quand même été efficace ! ";
     primeInt++;
 }
 else if (primeInt == 23)
@@ -269,7 +275,7 @@ else if (primeInt == 23)
     ArtBG2.SetActive(false);
     ArtBG2.SetActive(true);
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "En tombant la pauvre chaise en bois c'est cassé, ça a créer assez d'espace pour que je m'extirpe de là.";
+    Char1speech.text = "En tombant la pauvre chaise en bois s'est cassé, ça a créer assez d'espace pour que je m'extirpe de là.";
     primeInt=30;
 }
 
@@ -278,25 +284,25 @@ else if (primeInt == 23)
 else if (primeInt == 25){
 
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Comment c'était déjà dans les vidéos de comment se défaire de ces lien, ça va mettre utile finalement !";
+    Char1speech.text = "Comment c'était déjà dans les vidéos de comment se défaire de ces liens, ça va m'être utile finalement !";
     primeInt++;
 }
 else if (primeInt == 26){
 
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Ah oui, il faut que je fasse passer la corde qui me retiens à la chaise à l'intérieur du bout de corde qui sert mon poignet";
+    Char1speech.text = "Ah oui, il faut que je fasse passer la corde qui me retient à la chaise à l'intérieur du bout de corde qui sert mon poignet";
     primeInt++;
 }
 else if (primeInt == 27){
 
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "comme ça, ça créer un espace pour que je puisse retirer la corde qui me ligote à cet foutu chaise et voilà !";
+    Char1speech.text = "comme ça, ça créer un espace pour que je puisse retirer la corde qui me ligote à cette foutue chaise et voilà !";
     primeInt++;
 }
 else if (primeInt == 28){
 
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Pfiou moi qui pensait que j'étais parano à regarder ce genre de vidéo.";
+    Char1speech.text = "Pfiou moi qui pensais que j'étais parano à regarder ce genre de vidéo.";
     primeInt = 24;
 }
 else if (primeInt == 24)
@@ -304,7 +310,7 @@ else if (primeInt == 24)
     ArtBG1.SetActive(false);
     ArtBG2.SetActive(true);
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "Maintenant je peux accéder aux restes de la pièce, il faut que je l'inspecte pour trouver une sortie.";
+    Char1speech.text = "Maintenant je peux accéder au reste de la pièce, il faut que je l'inspecte pour trouver une sortie.";
     primeInt = 30;
 }
 else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
@@ -321,7 +327,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
 
         ArtChar1a.SetActive(true);
         Char1name.text = GameHandler.playerName; 
-        Char1speech.text = "Est ce que je pourrais simplement passé par la porte ?";
+        Char1speech.text = "Est-ce que je pourrais simplement passer par la porte ?";
 
         primeInt++;
     }
@@ -333,7 +339,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
 //rond2Armoire
     else if (primeInt == 50){  //C'est pour les choix faites attention ici où ça va pas marcher
         Char1name.text = GameHandler.playerName; 
-        Char1speech.text = "Cet armoire à l'air bancale, que devrais-je faire ?";
+        Char1speech.text = "Cette armoire à l'air bancale, que devrais-je faire ?";
         nextButton.SetActive(false);//ça fait en sorte qu'on ne puisse pas passer le dialogue 
         allowSpace = false;// N'autorise pas pas le passage au dialogue suivant avec la barre espace
         Choice2aOuvrirArmoire.SetActive(true);//active les choix possibles
@@ -352,14 +358,14 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
     {
 
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "J'ouvre précautionneusement l'armoire pour y découvrir... un pied de biche usagé sur le coin de l'armoire.";
+    Char1speech.text = "J'ouvre précautionneusement l'armoire pour y découvrir... un pied-de-biche usagé sur le coin de l'armoire.";
     primeInt++;
     }
     else if (primeInt == 53)
     {
     
     Char1name.text = GameHandler.playerName; 
-    Char1speech.text = "J'ai pris le pied de biche, on ne sait jamais si il peut me servir à quelque chose.";
+    Char1speech.text = "J'ai pris le pied-de-biche, on ne sait jamais s'il peut me servir à quelque chose.";
     piedDeBiche = true;
     primeInt++;
     }
@@ -385,13 +391,13 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 58)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Avec le pied de biche que j'ai récupérer je peux bouger cet armoire.";
+            Char1speech.text = "Avec le pied-de-biche que j'ai récupéré je peux bouger cette armoire.";
             primeInt++;
         }
         else if (primeInt == 59)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je place mon outils sur le côté droit de l'armoire pour faire un levier.";
+            Char1speech.text = "Je place mon outil sur le côté droit de l'armoire pour faire un levier.";
             primeInt++;
         }
         else if (primeInt == 60)
@@ -412,7 +418,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
             ArtBG2.SetActive(false);
             ArtBG3.SetActive(true);
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "En poussant sur mon levier improvisé de fortune de toute mes forces, l'armoire tombe à la renverse sur le côté,";
+            Char1speech.text = "En poussant sur mon levier improvisé de fortune de toutes mes forces, l'armoire tombe à la renverse sur le côté,";
             primeInt++;
         }
         else if (primeInt == 62)
@@ -424,13 +430,13 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 63)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Par contre, le pied de biche n'a pas tenu le coup, je ne pourrais plus l'utiliser.";
+            Char1speech.text = "Par contre, le pied-de-biche n'a pas tenu le coup, je ne pourrais plus l'utiliser.";
             primeInt++;
         }
         else if (primeInt == 64)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Ce n'est pas grave je vois enfin une possibilité de sortir de cette pièce !";
+            Char1speech.text = "Ce n'est pas grave, je vois enfin une possibilité de sortir de cette pièce !";
             primeInt++;
         }
         else if (primeInt == 65)
@@ -476,13 +482,13 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 71)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "J'essaye de l'ouvrir mais je n'arrive pas à l'ouvrir, elle a l'air bloqué,";
+            Char1speech.text = "J'essaye de l'ouvrir mais je n'y arrive pas, elle a l'air bloqué,";
             primeInt++;
         }
         else if (primeInt == 72)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "elle est pas toute jeune et ce n'est même pas du double vitrage…";
+            Char1speech.text = "elle n'est pas toute jeune et ce n'est même pas du double vitrage…";
             primeInt++;
         }
         else if (primeInt == 73)
@@ -494,7 +500,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
 
         else if (primeInt == 74){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Est ce que je pourrais…";
+            Char1speech.text = "Est-ce que je pourrais…";
             nextButton.SetActive(false);
             allowSpace = false;
             Choice4aArranger.SetActive(true);
@@ -504,17 +510,17 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         // après choix 4a d'arranger la fenêtre
         else if (primeInt == 75){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Si j'arrange la fenêtre en comprenant pourquoi elle ne s'ouvre pas je devrais pouvoir ouvrir cet foutu fenêtre. ";
+            Char1speech.text = "Si j'arrange la fenêtre en comprenant pourquoi elle ne s'ouvre pas, je devrai pouvoir ouvrir cette foutue fenêtre. ";
             primeInt++;
         }
         else if (primeInt == 76){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "J'inspecte la fenêtre de tout les angles en espérant trouver quelque chose qui explique son entêtement… ";
+            Char1speech.text = "J'inspecte la fenêtre de tous les angles en espérant trouver quelque chose qui explique son entêtement… ";
             primeInt++;
         }
         else if (primeInt == 77){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "On dirait que la poignée de la fenêtre est coincé par un bout de métal qui passe de par et d'autres de la poignée.";
+            Char1speech.text = "On dirait que la poignée de la fenêtre est coincée par un bout de métal qui passe de part et d'autre de la poignée.";
             primeInt++;
         }
         else if (primeInt == 78){
@@ -528,7 +534,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         //après choix 4b de péter la fenêtre
         else if (primeInt == 79){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Aller j'ai pas de temps à perdre, je dois vite sortir de là. ";
+            Char1speech.text = "Aller, je n'ai pas de temps à perdre, je dois vite sortir de là. ";
             primeInt++;
         }
         else if (primeInt == 80){
@@ -538,12 +544,12 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         }
         else if (primeInt == 81){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "comme pour enfoncer une porte avec mon épaule.";
+            Char1speech.text = "comme pour enfoncer une porte.";
             primeInt++;
         }
         else if (primeInt == 82){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "J'aurais dû le voir venir, un bout de verre c'est planté dans mon bras… (-2 de vie)";
+            Char1speech.text = "J'aurais dû le voir venir, un bout de verre s'est planté dans mon bras… (-2 de vie)";
 
             GameHandler.playerHealth -= 2;//perte de vie 
 
@@ -553,23 +559,23 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
             ArtBG2.SetActive(false);
             ArtBG4.SetActive(true);
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Aïe Aïe Aïe, ça fait un mal de chien mais au moins je peux passer par la fenêtre mais voyons d'abord ce qu'il y a en dessous.";
+            Char1speech.text = "Aïe Aïe Aïe, ça fait un mal de chien, mais au moins, je peux passer par la fenêtre mais voyons d'abord ce qu'il y a en dessous.";
             primeInt++;
         }
         //Les choix se rejoigne ici
         else if (primeInt == 84){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je suis au deuxième ou troisième étage peur être, en dessous de moi il y a le jardin.";
+            Char1speech.text = "Je suis au deuxième ou troisième étage peut-être, en dessous de moi il y a le jardin.";
             primeInt++;
         }
         else if (primeInt == 85){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Si je descend j'atterrirais dans de l'herbe,";
+            Char1speech.text = "Si je descends, j'atterrirai dans de l'herbe,";
             primeInt++;
         }
         else if (primeInt == 86){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "ce n'est pas du goudron heureusement mais je ne sais pas si ce n'est pas trop haut pour moi.";
+            Char1speech.text = "ce n'est pas du goudron heureusement, mais je ne sais pas si ce n'est pas trop haut pour moi.";
             primeInt++;
         }
         else if (primeInt == 87){  //C'est pour les choix faites attention ici où ça va pas marcher
@@ -589,22 +595,22 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         }
         else if (primeInt == 91){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je prend mon courage à deux mains et je passe part la fenêtre que j'ai brisé,";
+            Char1speech.text = "Je prends mon courage à deux mains et je passe par la fenêtre que j'ai brisé,";
             primeInt++;
         }
         else if (primeInt == 92){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "m'accroupissant sur le rebord de la fenêtre et je saute ! ";
+            Char1speech.text = "m'accroupissant sur le rebord de la fenêtre, je saute ! ";
             primeInt++;
         }
         else if (primeInt == 93){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Quand mes pieds ce réceptionne sur le sol, j'entends mes os craquer. ARRRRRGHH, je n'ai jamais senti une douleur aussi intense !";
+            Char1speech.text = "Quand mes pieds se réceptionnent sur le sol, j'entends mes os craquer. ARRRRRGHH, je n'ai jamais senti une douleur aussi intense !";
             primeInt++;
         }
         else if (primeInt == 94){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "A cause de la douleur, je suis tombé à la renverse. Je suis maintenant allongée sur le sol incapable de bouger… ";
+            Char1speech.text = "À cause de la douleur, je suis tombé à la renverse. Je suis maintenant allongé sur le sol incapable de bouger… ";
             primeInt++;
         }
         else if (primeInt == 95){
@@ -619,7 +625,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         //Ne pas sauter
         else if (primeInt == 96){
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "C'est trop risqué, je vais voir pour trouver une autre solution.";
+            Char1speech.text = "C'est trop risqué, je vais voir ailleurs pour trouver une autre solution.";
             primeInt++;
         }
         else if (primeInt == 97){
@@ -638,13 +644,13 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 101)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Je regarde sous la table en espérant un indice comme dans l'escape game que j'ai fait avec ma famille…";
+            Char1speech.text = "Je regarde sous la table en espérant un indice comme dans l'escape game que j'avais fait avec ma famille…";
             primeInt++;
         }
         else if (primeInt == 102)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Mais le seul truc que j'ai trouvé, c'est la nostalgie d'être loin de ma famille pendant que moi je suis dans cet endroit sordide…";
+            Char1speech.text = "Mais le seul truc que j'ai trouvé, c'est la nostalgie d'être loin de ma famille pendant que moi, je suis dans cet endroit sordide…";
             primeInt++;
         }
         else if (primeInt == 103){  //C'est pour les choix faites attention ici où ça va pas marcher
@@ -680,7 +686,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
             ArtBG2.SetActive(false);
             ArtBG5.SetActive(true);
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Bingo une trappe ! Mais elle est bloqué et il y a pas l'air d'avoir de clé, est ce qu'il y aurait quelque chose qui pourrait m'aider ?";
+            Char1speech.text = "Bingo une trappe ! Mais elle est bloqué et il n'y a pas l'air d'avoir de clé, est ce qu'il y aurait quelque chose qui pourrait m'aider ?";
             primeInt++;
         }
         else if (primeInt == 108){  //C'est pour les choix faites attention ici où ça va pas marcher
@@ -705,7 +711,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
             EndDialogue();
         }
         else if(primeInt == 110){
-            Char1speech.text = "En imbriquant le pied de biche dans la fente de la trappe, je pousse de toute mes forces pour faire un effet de levier.";
+            Char1speech.text = "En imbriquant le pied de biche dans la fente de la trappe, je pousse de toutes mes forces pour faire un effet de levier.";
             primeInt++;
         }
           
@@ -713,7 +719,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 111)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Après quelque effort, j'arrive à ouvrir la trappe.";
+            Char1speech.text = "Après quelques efforts, j'arrive à ouvrir la trappe.";
             primeInt++;
         }
         else if (primeInt == 112)
@@ -725,7 +731,7 @@ else if (primeInt == 30) //mettre quand le numéro du dialogue qui se finit
         else if (primeInt == 113)
         {
             Char1name.text = GameHandler.playerName; 
-            Char1speech.text = "Une échelle descend vers le bas et je la descend prudemment.";
+            Char1speech.text = "Une échelle descends vers le bas et je la descends prudemment.";
             primeInt++;
         }
         else if (primeInt == 114)

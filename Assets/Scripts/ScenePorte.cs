@@ -144,7 +144,7 @@ public class ScenePorte : MonoBehaviour //Vous changez le nom template en foncti
 
         if (primeInt == 120)
         {
-            SceneManager.LoadScene("SceneSalleDeBain");
+            SceneManager.LoadScene("SceneGrenier");
         }
 
 
